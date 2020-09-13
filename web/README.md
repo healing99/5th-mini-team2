@@ -3,4 +3,7 @@ frontend
 
 ## 실행
 `npm install`
-`npm start`
+`npm run dev`
+
+## 빌드
+`npm run build`
