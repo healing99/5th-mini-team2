@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
 const Main = () => {
   return (
     <div>
-      Main Page
+      <p>Main Page</p>
       <style jsx>{`
-        div {
+        p {
           font-size: 48px;
-        }  
+        }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
 export default Main;

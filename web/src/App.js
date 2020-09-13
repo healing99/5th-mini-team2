@@ -8,6 +8,12 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Main} />
       </Switch>
+
+      <style jsx global>{`
+        body {
+          padding: 0 16px;
+        }
+      `}</style>
     </BrowserRouter>
   );
 };
