@@ -1,15 +1,14 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Main from '@/pages/Main';
 
 const App = () => {
   return (
-    <div>
-      React Init
-      <style jsx global>{`
-        div {
-          font-size: 100px;
-        }
-      `}</style>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Main} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
