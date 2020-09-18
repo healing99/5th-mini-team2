@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from './Button';
 
 const CreateLink = () => {
   const [time, setTime] = useState('');
@@ -34,6 +35,7 @@ const CreateLink = () => {
       console.log(`${lecture} ${subject} ${time}`);
       onReset();
     }
+    document.getElementById('myButton').blur();
   };
 
   //버튼 누른 후 입력창 초기화 되도록
@@ -51,29 +53,41 @@ const CreateLink = () => {
         <form className="form-inline" onSubmit={handleSubmit}>
           <div className="input-group">
             <div className="input-group-prepend">
-              <div className="text-group">클래스명 입력</div>
-            </div>
-            <input type="text" className="form-control" name="lecture" onChange={handleValueChange} value={lecture} />
-          </div>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <div className="text-group">종목 입력</div>
-            </div>
-            <input type="text" className="form-control" name="subject" onChange={handleValueChange} value={subject} />
-          </div>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <div className="text-group">시간(분) 입력</div>
+              <div className="div-group">클래스명 입력</div>
             </div>
             <input
               type="text"
-              className="form-control text-field"
+              className="form-control text-field-first"
+              name="lecture"
+              onChange={handleValueChange}
+              value={lecture}
+            />
+          </div>
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <div className="div-group">종목 입력</div>
+            </div>
+            <input
+              type="text"
+              className="form-control text-field-second"
+              name="subject"
+              onChange={handleValueChange}
+              value={subject}
+            />
+          </div>
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <div className="div-group">시간 입력</div>
+            </div>
+            <input
+              type="text"
+              className="form-control text-field-third"
               name="time"
               onChange={handleTimeValueChange}
               value={time}
             />
           </div>
-          <button type="submit" className="btn btn-secondary">
+          <button type="submit" className="btn btn-secondary" id="myButton">
             링크생성
           </button>
         </form>
@@ -81,18 +95,30 @@ const CreateLink = () => {
 
       <style jsx>
         {`
-          .text-group {
-            margin: 5px 10px 5px 100px;
+          .div-group {
+            margin: 10px 10px 10px 100px;
           }
           button {
             margin-left: 100px;
-            border-radius: 50px;
+            width: 146px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: #d4d4d4;
           }
-          .text-field {
-            width: 100px;
+          .text-field-first {
+            width: 136px;
+            height: 48px;
+            background-color: #ffffff;
           }
-          nav {
-            display: flex;
+          .text-field-second {
+            width: 306px;
+            height: 48px;
+            background-color: #ffffff;
+          }
+          .text-field-third {
+            width: 144px;
+            height: 48px;
+            background-color: #ffffff;
           }
         `}
       </style>
