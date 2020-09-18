@@ -1,14 +1,12 @@
 import CreateLink from '@/components/CreateLink';
-import React, { Component } from 'react';
+import React from 'react';
 
-class Create extends Component {
-  render() {
-    return (
-      <div>
-        <CreateLink></CreateLink>
-      </div>
-    );
-  }
-}
+const Create = () => {
+  return (
+    <div>
+      <CreateLink></CreateLink>
+    </div>
+  );
+};
 
 export default Create;
