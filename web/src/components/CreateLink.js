@@ -48,7 +48,7 @@ const CreateLink = () => {
   };
 
   return (
-    <div className="divStyle">
+    <div className="top-nav">
       <nav className="navbar navbar-light bg-light">
         <form className="form-inline" onSubmit={handleSubmit}>
           <div className="input-group">
@@ -98,27 +98,23 @@ const CreateLink = () => {
           .div-group {
             margin: 10px 10px 10px 100px;
           }
-          button {
+          .btn-secondary {
             margin-left: 100px;
             width: 146px;
             height: 50px;
             border-radius: 25px;
-            background-color: #d4d4d4;
           }
           .text-field-first {
             width: 136px;
             height: 48px;
-            background-color: #ffffff;
           }
           .text-field-second {
             width: 306px;
             height: 48px;
-            background-color: #ffffff;
           }
           .text-field-third {
             width: 144px;
             height: 48px;
-            background-color: #ffffff;
           }
         `}
       </style>
