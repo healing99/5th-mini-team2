@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './QuestionRadio.css';
 
 function QuestionRadio() {
   const [state, setState] = useState({
@@ -14,16 +13,6 @@ function QuestionRadio() {
     let obj = {};
     obj[event.target.value] = event.target.checked; // true
     setState({ radioGroup: obj });
-  };
-
-  const showImg = (event) => {
-    var reader = new FileReader();
-    reader.onload = function (event) {
-      var img = document.createElement('img');
-      img.setAttribute('src', event.target.result);
-      document.querySelector('div#img_container').appendChild(img);
-    };
-    reader.readAsDataURL(event.target.files[0]);
   };
 
   return (
@@ -68,11 +57,30 @@ function QuestionRadio() {
         </span>
       </label>
 
-      <br />
-      <br />
-      <h2>문제1</h2>
-      <input type="file" accept="image/*" className="input-file" onChange={showImg} />
-      <div id="img_container" className="img-photo"></div>
+      <style jsx>
+        {`
+          input[type='radio'] {
+            display: none;
+          }
+
+          input[type='radio'] + span {
+            width: 150px;
+            height: 53px;
+            border-radius: 27px;
+
+            display: inline-block;
+            background: none;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 500;
+            cursor: pointer;
+          }
+
+          input[type='radio']:checked + span {
+            background: #f2f2f2;
+          }
+        `}
+      </style>
     </div>
   );
 }
