@@ -1,56 +1,32 @@
 import React, { useState } from 'react';
 
 function QuestionRadio() {
-  const [state, setState] = useState({
-    radioGroup: {
-      multipleChoice: false,
-      narrative: true,
-      shortAnswer: false,
-    },
-  });
+  const [radioGroup, setRadioGroup] = useState({ multipleChoice: true, narrative: false, shortAnswer: false });
 
   const handleRadio = (event) => {
-    let obj = {};
-    obj[event.target.value] = event.target.checked; // true
-    setState({ radioGroup: obj });
+    let newRadioGroup = { multipleChoice: false, narrative: false, shortAnswer: false };
+    setRadioGroup({ ...newRadioGroup, [event.target.name]: event.target.checked });
+    console.log(radioGroup);
   };
 
   return (
     <div>
       <label>
-        <input
-          type="radio"
-          name="radioGroup"
-          value="multipleChoice"
-          checked={state.radioGroup['multipleChoice']}
-          onChange={handleRadio}
-        />
+        <input type="radio" name="multipleChoice" checked={radioGroup['multipleChoice']} onChange={handleRadio} />
         <span>
           <img src="check_on.png" width="20" />
           객관식
         </span>
       </label>
       <label>
-        <input
-          type="radio"
-          name="radioGroup"
-          value="narrative"
-          checked={state.radioGroup['narrative']}
-          onChange={handleRadio}
-        />
+        <input type="radio" name="narrative" checked={radioGroup['narrative']} onChange={handleRadio} />
         <span>
           <img src="check_long.png" width="20" />
           서술형
         </span>
       </label>
       <label>
-        <input
-          type="radio"
-          name="radioGroup"
-          value="shortAnswer"
-          checked={state.radioGroup['shortAnswer']}
-          onChange={handleRadio}
-        />
+        <input type="radio" name="shortAnswer" checked={radioGroup['shortAnswer']} onChange={handleRadio} />
         <span>
           <img src="check_short.png" width="20" />
           단답형
