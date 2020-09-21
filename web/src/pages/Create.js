@@ -4,7 +4,7 @@ import React from 'react';
 const Create = () => {
   return (
     <div>
-      <CreateLink></CreateLink>
+      <CreateLink />
     </div>
   );
 };

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import Button from './Button';
+import React, { useState, useRef } from 'react';
 
 const CreateLink = () => {
-  const [time, setTime] = useState('');
+  const submitButton = useRef();
   const [inputs, setInputs] = useState({
     lecture: '',
     subject: '',
+    time: '',
   });
 
   //수업명과 과목명 입력받기
-  const { lecture, subject } = inputs;
+  const { lecture, subject, time } = inputs;
   const handleValueChange = (e) => {
     const { value, name } = e.target;
     setInputs({
@@ -18,33 +18,25 @@ const CreateLink = () => {
     });
   };
 
-  //시간 입력받기(숫자만 입력받을 수 있도록 따로 분리)
-  const handleTimeValueChange = (e) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === '' || re.test(e.target.value)) {
-      setTime(e.target.value);
-    }
-  };
-
   //버튼 누르면 값을 콘솔창에서 확인할 수 있도록
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (`${lecture}` == '' || `${subject}` == '' || `${time}` == '') {
+    if (`${lecture}` === '' || `${subject}` === '' || `${time}` === '') {
       alert('내용을 입력하세요');
     } else {
       console.log(`${lecture} ${subject} ${time}`);
-      onReset();
+      resetInputs();
     }
-    document.getElementById('myButton').blur();
+    submitButton.current.blur();
   };
 
   //버튼 누른 후 입력창 초기화 되도록
-  const onReset = () => {
+  const resetInputs = () => {
     setInputs({
       lecture: '',
       subject: '',
+      time: '',
     });
-    setTime('');
   };
 
   return (
@@ -57,7 +49,7 @@ const CreateLink = () => {
             </div>
             <input
               type="text"
-              className="form-control text-field-first"
+              className="form-control textField-lecture"
               name="lecture"
               onChange={handleValueChange}
               value={lecture}
@@ -69,7 +61,7 @@ const CreateLink = () => {
             </div>
             <input
               type="text"
-              className="form-control text-field-second"
+              className="form-control textField-subject"
               name="subject"
               onChange={handleValueChange}
               value={subject}
@@ -80,14 +72,14 @@ const CreateLink = () => {
               <div className="div-group">시간 입력</div>
             </div>
             <input
-              type="text"
-              className="form-control text-field-third"
+              type="number"
+              className="form-control textField-time"
               name="time"
-              onChange={handleTimeValueChange}
+              onChange={handleValueChange}
               value={time}
             />
           </div>
-          <button type="submit" className="btn btn-secondary" id="myButton">
+          <button type="submit" className="btn btn-secondary" ref={submitButton}>
             링크생성
           </button>
         </form>
@@ -104,15 +96,15 @@ const CreateLink = () => {
             height: 50px;
             border-radius: 25px;
           }
-          .text-field-first {
+          .textField-lecture {
             width: 136px;
             height: 48px;
           }
-          .text-field-second {
+          .textField-subject {
             width: 306px;
             height: 48px;
           }
-          .text-field-third {
+          .textField-time {
             width: 144px;
             height: 48px;
           }
