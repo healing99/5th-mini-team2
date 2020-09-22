@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
 
-const CreateLink = () => {
+const CreateExamForm = () => {
   const submitButton = useRef();
   const [inputs, setInputs] = useState({
     lecture: '',
@@ -78,4 +78,4 @@ const CreateLink = () => {
   );
 };
 
-export default CreateLink;
+export default CreateExamForm;
