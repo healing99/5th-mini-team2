@@ -2,11 +2,22 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 const TextField = forwardRef((props, ref) => {
-  const { label = '', onChange = null, value = '', name = '' } = props;
+  const { label = '', onChange = null, value = '', name = '', pattern } = props;
   return (
     <div className="textfield-root">
       <label className="col-form-label">{label}</label>
-      <input value={value} name={name} onChange={onChange} ref={ref} type="text" className="form-control" />
+      <input
+        pattern={pattern}
+        value={value}
+        name={name}
+        onChange={(e) => {
+          if (pattern && !pattern.test(e.target.value)) return;
+          onChange(e);
+        }}
+        ref={ref}
+        type="text"
+        className="form-control"
+      />
       <style jsx>{`
         .textfield-root {
           width: 100%;
@@ -30,6 +41,7 @@ TextField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   name: PropTypes.string,
+  pattern: PropTypes.object,
 };
 
 export default TextField;

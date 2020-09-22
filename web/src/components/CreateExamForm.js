@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
+import { REG_EXP } from '@/const/RegExp';
 
 const CreateExamForm = () => {
   const submitButton = useRef();
@@ -23,7 +24,6 @@ const CreateExamForm = () => {
   //버튼 누르면 값을 콘솔창에서 확인할 수 있도록
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (lecture === '' || subject === '' || time === '') {
       alert('내용을 입력하세요');
     } else {
@@ -55,12 +55,20 @@ const CreateExamForm = () => {
               <TextField onChange={handleValueChange} value={inputs.subject} name="subject" label="제목 입력" />
             </div>
             <div className="col-3">
-              <TextField onChange={handleValueChange} value={inputs.time} name="time" label="시간 입력" />
+              <TextField
+                pattern={REG_EXP.Number}
+                onChange={handleValueChange}
+                value={inputs.time}
+                name="time"
+                label="시간 입력"
+              />
             </div>
             <div className="col">
-              <Button ref={submitButton} type="submit" color="secondary">링크 생성</Button>
+              <Button ref={submitButton} type="submit" color="secondary">
+                링크 생성
+              </Button>
             </div>
-          </div>  
+          </div>
         </form>
       </nav>
 
