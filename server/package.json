@@ -1,16 +1,19 @@
 {
   "name": "ds-2team-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "nodemon ./app"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "http-errors": "^1.8.0",
+    "is-0": "^1.0.2",
     "moment": "^2.27.0",
     "morgan": "^1.10.0",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.1.0",
+    "uuid4": "^2.0.2"
   }
 }
