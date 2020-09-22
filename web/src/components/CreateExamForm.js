@@ -64,7 +64,7 @@ const CreateExamForm = () => {
               />
             </div>
             <div className="col">
-              <Button ref={submitButton} type="submit" color="secondary">
+              <Button ref={submitButton} type="submit" color="primary">
                 링크 생성
               </Button>
             </div>
