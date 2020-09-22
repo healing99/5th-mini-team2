@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import Button from '@/components/Button';
+import TextField from '@/components/TextField';
 
 const CreateLink = () => {
   const submitButton = useRef();
@@ -21,12 +23,14 @@ const CreateLink = () => {
   //버튼 누르면 값을 콘솔창에서 확인할 수 있도록
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (`${lecture}` === '' || `${subject}` === '' || `${time}` === '') {
+
+    if (lecture === '' || subject === '' || time === '') {
       alert('내용을 입력하세요');
     } else {
       console.log(`${lecture} ${subject} ${time}`);
       resetInputs();
     }
+
     submitButton.current.blur();
   };
 
@@ -40,73 +44,33 @@ const CreateLink = () => {
   };
 
   return (
-    <div className="top-nav">
-      <nav className="navbar navbar-light bg-light">
-        <form className="form-inline" onSubmit={handleSubmit}>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <div className="div-group">클래스명 입력</div>
+    <div className="bg-light">
+      <nav className="container navbar navbar-light">
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-3">
+              <TextField onChange={handleValueChange} value={inputs.lecture} name="lecture" label="클래스명 입력" />
             </div>
-            <input
-              type="text"
-              className="form-control textField-lecture"
-              name="lecture"
-              onChange={handleValueChange}
-              value={lecture}
-            />
-          </div>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <div className="div-group">종목 입력</div>
+            <div className="col-4">
+              <TextField onChange={handleValueChange} value={inputs.subject} name="subject" label="제목 입력" />
             </div>
-            <input
-              type="text"
-              className="form-control textField-subject"
-              name="subject"
-              onChange={handleValueChange}
-              value={subject}
-            />
-          </div>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <div className="div-group">시간 입력</div>
+            <div className="col-3">
+              <TextField onChange={handleValueChange} value={inputs.time} name="time" label="시간 입력" />
             </div>
-            <input
-              type="number"
-              className="form-control textField-time"
-              name="time"
-              onChange={handleValueChange}
-              value={time}
-            />
-          </div>
-          <button type="submit" className="btn btn-secondary" ref={submitButton}>
-            링크생성
-          </button>
+            <div className="col">
+              <Button ref={submitButton} type="submit" color="secondary">링크 생성</Button>
+            </div>
+          </div>  
         </form>
       </nav>
 
       <style jsx>
         {`
-          .div-group {
-            margin: 10px 10px 10px 100px;
+          .navbar {
+            padding: 1.5rem 1rem;
           }
-          .btn-secondary {
-            margin-left: 100px;
-            width: 146px;
-            height: 50px;
-            border-radius: 25px;
-          }
-          .textField-lecture {
-            width: 136px;
-            height: 48px;
-          }
-          .textField-subject {
-            width: 306px;
-            height: 48px;
-          }
-          .textField-time {
-            width: 144px;
-            height: 48px;
+          .container {
+            min-width: 800px;
           }
         `}
       </style>
