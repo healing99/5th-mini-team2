@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ToggleButton from '@/components/ToggleButton';
 
-function QuestionRadio() {
+function QuestionType() {
   const [radioGroup, setRadioGroup] = useState({ multipleChoice: true, narrative: false, shortAnswer: false });
 
   const handleRadio = (event) => {
@@ -27,4 +27,4 @@ function QuestionRadio() {
   );
 }
 
-export default QuestionRadio;
+export default QuestionType;
