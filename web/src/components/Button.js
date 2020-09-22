@@ -10,8 +10,9 @@ const Button = forwardRef((props, ref) => {
     disabled = false,
     size = 'md',
     onClick = null,
-    roundType = 'rounded-0',
+    roundType = 'rounded-pill',
   } = props;
+
   return (
     <button
       ref={ref}
@@ -20,6 +21,12 @@ const Button = forwardRef((props, ref) => {
       disabled={disabled}
       className={classNames('btn', `btn-${color}`, size !== 'md' && `btn-${size}`, roundType)}>
       {children}
+
+      <style jsx>{`
+        .rounded-pill {
+          padding: 0.375rem 1rem;
+        }
+      `}</style>
     </button>
   );
 });
