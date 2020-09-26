@@ -15,7 +15,8 @@ app.set('port', port);
 app.set('trust proxy', true);
 
 logger.token('date', function () {
-  let d = new Date().toString().replace(/[A-Z]{3}\+/, '+').split(/ /);
+  const d = new Date().toString().replace(/[A-Z]{3}\+/, '+').split(/ /);
+
   return (moment(new Date).format('YYYY/MM/DD') + ' ' + d[4] + ' ' + d[5]);
 });
 app.use(logger('[:date] [:remote-addr] [:method HTTP/:http-version] [:status] [:res[content-length]] [:url] [:user-agent]'));
@@ -23,14 +24,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 const mainRouter = require('./routes/main');
+const authRouter = require('./routes/auth');
 app.use('/', mainRouter);
+app.use('/auth', authRouter);
+
 
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
 app.use(function (err, req, res, next) {
-  let notice = { 'status': err.status, 'msg': err.message };
+  const notice = { 'status': err.status, 'msg': err.message };
+
   // NodeJS 실행 환경에 따라 에러 메세지 노출 범위 수정 (development 일 경우 err.stack 노출)
   if (req.app.get('env') === 'development') {
     notice['stack'] = err.stack;
