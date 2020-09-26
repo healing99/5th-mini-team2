@@ -13,7 +13,7 @@ const App = () => {
 
       <style jsx global>{`
         body {
-          padding: 0 16px;
+          padding: 0;
         }
       `}</style>
     </BrowserRouter>

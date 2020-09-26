@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Button from './Button';
-import AnswerList from './AnswerList';
+import AnswerItem from './AnswerItem';
 
 const AnswerInput = () => {
   const [answers, setAnswers] = useState([
@@ -47,10 +47,12 @@ const AnswerInput = () => {
   return (
     <div className="answer-form">
       <div className="answer-form__nav">
-        <div className="answer-form__title">채점용 정답 입력</div>
+        <p className="answer-form__title">채점용 정답 입력</p>
       </div>
       <div className="answer-form__content">
-        <AnswerList answers={answers} onToggle={onToggle} />
+        {answers.map((answer) => (
+          <AnswerItem key={answer.id} answer={answer} onToggle={onToggle} />
+        ))}
         <Button onClick={onInsert}>번호추가+</Button>
       </div>
 
@@ -69,12 +71,11 @@ const AnswerInput = () => {
             align-items: center;
           }
           .answer-form__title {
-            width: 124px;
-            height: 25px;
-            font-size: 18px;
-            line-height: 1.22;
-            letter-spacing: -0.9px;
+            width: 100%;
+            font-size: 16px;
             color: #6c6c6c;
+            margin: 0;
+            text-align: center;
           }
           .answer-form__content {
             padding: 33px 51px;

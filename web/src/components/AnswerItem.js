@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AnswerListItem = ({ answer, onToggle }) => {
+const AnswerItem = ({ answer, onToggle }) => {
   const { checked, id } = answer;
   return (
     <div className="answer-listitem">
@@ -13,9 +13,10 @@ const AnswerListItem = ({ answer, onToggle }) => {
         {`
           .answer-listitem {
             padding-bottom: 18px;
+            cursor: pointer;
           }
           .answer-listitem__circle {
-            font-size: 22px;
+            font-size: 16px;
           }
           .answer-listitem__number {
             padding-left: 10px;
@@ -26,14 +27,4 @@ const AnswerListItem = ({ answer, onToggle }) => {
   );
 };
 
-const AnswerList = ({ answers, onToggle }) => {
-  return (
-    <div>
-      {answers.map((answer) => (
-        <AnswerListItem answer={answer} key={answer.id} onToggle={onToggle} />
-      ))}
-    </div>
-  );
-};
-
-export default AnswerList;
+export default AnswerItem;

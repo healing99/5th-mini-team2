@@ -1,25 +1,43 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-/**
- * @param {props} param0
- * children: text
- * type: 버튼 유형. primary, secondary, success, danger, warning, info, light, dark, link
- * disabled: 클릭 가능 여부
- * size: 크기. lg, sm.
- *
- * @todo icon props로 받기
- */
+const Button = forwardRef((props, ref) => {
+  const {
+    children,
+    type = 'button',
+    color = 'primary',
+    disabled = false,
+    size = 'md',
+    onClick = null,
+    roundType = 'rounded-pill',
+  } = props;
 
-const Button = ({ children, type = 'primary', disabled = false, size = '', onClick = null }) => {
   return (
     <button
+      ref={ref}
+      type={type}
       onClick={onClick}
       disabled={disabled}
-      className={classNames('btn', `btn-${type}`, size !== '' && `btn-${size}`)}>
+      className={classNames('btn', `btn-${color}`, size !== 'md' && `btn-${size}`, roundType)}>
       {children}
+
+      <style jsx>{`
+        .rounded-pill {
+          padding: 0.375rem 1rem;
+        }
+      `}</style>
     </button>
   );
-};
+});
 
+Button.propTypes = {
+  children: PropTypes.node,
+  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'link']),
+  disabled: PropTypes.bool,
+  size: PropTypes.oneOf(['lg', 'sm', 'md']),
+  onClick: PropTypes.func,
+  roundType: PropTypes.oneOf(['rounded', 'rounded-top', 'rounded-circle', 'rounded-pill', 'rounded-0']),
+  type: PropTypes.string,
+};
 export default Button;
