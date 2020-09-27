@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-
-const authMd = require('../model/auth.js');
+const authMd = require('../model/auth');
+const is = require('is-0');
 
 router.post('/register/:Gr', async (req, res, next) => {
-  const Gr = req.params.Gr;  // 유저 그룹
-  const userId = req.body.userId;  // 유저 ID
-  const userPw = req.body.userPw;  // 유저 PW
+  const Gr = req.params.Gr;
+  const { userId, userPw } = req.body;  //유저 그룹, 유저 ID, 유저 PW
   try {
+    if (is.empty(userId) || is.empty(userPw)) throw new Error('필수 파라미터가 없습니다.');
     res.status(200).json(await authMd.register(userId, userPw, Gr));
   } catch (err) {
     res.status(404).json({ 'status': 'error', 'msg': err.message });
@@ -15,9 +15,9 @@ router.post('/register/:Gr', async (req, res, next) => {
 });
 
 router.post('/check', async (req, res, next) => {
-  const userId = req.body.userId;  // 유저 ID
-  const userPw = req.body.userPw;  // 유저 PW
+  const { userId, userPw } = req.body;  // 유저 ID, 유저 PW
   try {
+    if (is.empty(userId) || is.empty(userPw)) throw new Error('필수 파라미터가 없습니다.');
     res.status(200).json(await authMd.check(userId, userPw));
   } catch (err) {
     res.status(404).json({ 'status': 'error', 'msg': err.message });

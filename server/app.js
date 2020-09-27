@@ -23,11 +23,14 @@ app.use(logger('[:date] [:remote-addr] [:method HTTP/:http-version] [:status] [:
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const mainRouter = require('./routes/main');
+const etcRouter = require('./routes/etc');
 const authRouter = require('./routes/auth');
-app.use('/', mainRouter);
+const examRouter = require('./routes/exam');
+const questionRouter = require('./routes/question');
+app.use('/', etcRouter);
 app.use('/auth', authRouter);
-
+app.use('/exam', examRouter);
+app.use('/question', questionRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
@@ -35,7 +38,6 @@ app.use(function (req, res, next) {
 
 app.use(function (err, req, res, next) {
   const notice = { 'status': err.status, 'msg': err.message };
-
   // NodeJS 실행 환경에 따라 에러 메세지 노출 범위 수정 (development 일 경우 err.stack 노출)
   if (req.app.get('env') === 'development') {
     notice['stack'] = err.stack;
