@@ -2,11 +2,12 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 const TextField = forwardRef((props, ref) => {
-  const { label = '', onChange = null, value = '', name = '', pattern } = props;
+  const { label = '', onChange = null, value = '', name = '', pattern, placeholder = '', style } = props;
   return (
     <div className="textfield-root">
       <label className="col-form-label">{label}</label>
       <input
+        placeholder={placeholder}
         pattern={pattern}
         value={value}
         name={name}
@@ -17,6 +18,7 @@ const TextField = forwardRef((props, ref) => {
         ref={ref}
         type="text"
         className="form-control"
+        style={style}
       />
       <style jsx>{`
         .textfield-root {
