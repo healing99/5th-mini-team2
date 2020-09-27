@@ -37,7 +37,7 @@ const Modal = ({ isModalOpen, closeModal }) => {
                 border-radius: 20px;
                 background-color: white;
                 box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-                padding: 30px 20px;
+                padding: 42px 49px;
               }
               .modal-form-title {
                 font-size: 22px;
@@ -72,7 +72,7 @@ const Modal = ({ isModalOpen, closeModal }) => {
                 right: 5px;
               }
               .modal-form-content__copybtn {
-                margin-left: 10px;
+                margin-left: 14px;
                 color: #6c6c6c;
                 border: solid 1px #707070;
                 box-shadow: none;

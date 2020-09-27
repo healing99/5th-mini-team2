@@ -26,14 +26,12 @@ const Create = () => {
         {[1, 2, 3, 4, 5].map((_, idx) => (
           <Question key={idx} />
         ))}
+        <div className="add-button">
+          <Button>문제추가</Button>
+        </div>
       </main>
-      <Button>문제추가</Button>
 
-      {/* 모달테스트 */}
-      <div>
-        {/* <button onClick={openModal}>modal test</button> */}
-        <Modal isModalOpen={isModalOpen} closeModal={closeModal} />
-      </div>
+      <Modal isModalOpen={isModalOpen} closeModal={closeModal} />
 
       <style jsx>{`
         .main-pad {
@@ -41,6 +39,11 @@ const Create = () => {
         }
         .container {
           padding-bottom: 64px;
+        }
+        .add-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       `}</style>
     </div>
