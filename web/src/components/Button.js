@@ -11,10 +11,12 @@ const Button = forwardRef((props, ref) => {
     size = 'md',
     onClick = null,
     roundType = 'rounded-pill',
+    style,
   } = props;
 
   return (
     <button
+      style={style}
       ref={ref}
       type={type}
       onClick={onClick}
