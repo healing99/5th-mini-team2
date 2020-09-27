@@ -3,7 +3,7 @@ import Button from '@/components/Button';
 import TextField from '@/components/TextField';
 import { REG_EXP } from '@/const/RegExp';
 
-const CreateExamForm = () => {
+const CreateExamForm = ({ openModal }) => {
   const submitButton = useRef();
   const [inputs, setInputs] = useState({
     lecture: '',
@@ -64,7 +64,7 @@ const CreateExamForm = () => {
               />
             </div>
             <div className="col">
-              <Button ref={submitButton} type="submit" color="primary">
+              <Button ref={submitButton} type="submit" color="primary" onClick={openModal}>
                 링크 생성
               </Button>
             </div>
