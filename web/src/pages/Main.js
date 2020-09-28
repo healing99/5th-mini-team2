@@ -4,13 +4,13 @@ import Button from '@/components/Button';
 import iconStudent from '@/assets/images/iconStudent.png';
 import iconTest from '@/assets/images/iconTest.png';
 import iconAcademy from '@/assets/images/iconAcademy.png';
+import banner from '@/assets/images/banner.png';
 
 const Main = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleValueChange = (e) => {
     setSearchValue(e.target.value);
-    console.log(searchValue);
   };
   //로그인과 회원가입
   const handleLogin = (e) => {
@@ -22,13 +22,15 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <span style={{ cursor: 'pointer', marginLeft: '1200px' }} onClick={handleLogin}>
-        로그인
-      </span>
-      <span style={{ cursor: 'pointer', marginLeft: '20px' }} onClick={handleSignUp}>
-        회원가입
-      </span>
       <div className="first-container" align="center">
+        <div className="spanText">
+          <span className="loginButton" onClick={handleLogin}>
+            로그인
+          </span>
+          <span className="signupButton" onClick={handleSignUp}>
+            회원가입
+          </span>
+        </div>
         <div className="title">
           테스티와 함께 <br />
           시험지 제작과 학생관리를 한번에!
@@ -51,10 +53,10 @@ const Main = () => {
         <div className="row">
           <div className="col">
             <div>
-              <img className="icon" width="100px" height="80px" src={iconStudent} />
+              <img className="icon" src={iconStudent} />
             </div>
             <Button
-              color="#ffffff"
+              color="light"
               style={{
                 marginTop: '20px',
                 width: '120px',
@@ -67,10 +69,10 @@ const Main = () => {
           </div>
           <div className="col">
             <div>
-              <img className="icon" width="100px" height="80px" src={iconTest}></img>
+              <img className="icon" src={iconTest}></img>
             </div>
             <Button
-              color="#ffffff"
+              color="light"
               style={{
                 marginTop: '20px',
                 width: '120px',
@@ -83,10 +85,10 @@ const Main = () => {
           </div>
           <div className="col">
             <div>
-              <img className="icon" width="100px" height="80px" src={iconAcademy}></img>
+              <img className="icon" src={iconAcademy}></img>
             </div>
             <Button
-              color="#ffffff"
+              color="light"
               style={{
                 marginTop: '20px',
                 width: '120px',
@@ -101,17 +103,38 @@ const Main = () => {
       </div>
       <style jsx>
         {`
+          .main-container {
+            height: 100vh;
+          }
+          .spanText {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 230px;
+          }
+          .loginButton {
+            cursor: pointer;
+            color: #ffffff;
+            margin-top: 30px;
+            font-size: 15px;
+          }
+          .signupButton {
+            cursor: pointer;
+            color: #ffffff;
+            margin-top: 30px;
+            margin-left: 20px;
+            font-size: 15px;
+          }
           .first-container {
-            height: 350px;
-            background-image: url('@/assets/images/banner.png');
+            height: 48%;
+            background-image: url(${banner});
+            background-position: center top;
           }
           .title {
-            padding-top: 100px;
-            font-size: 28px;
+            padding-top: 90px;
+            font-size: 26px;
             font-weight: bold;
             line-height: 1.47;
-            letter-spacing: -1.9px;
-            color: black;
+            color: #ffffff;
           }
           .sub-title {
             padding-top: 10px;
@@ -123,13 +146,12 @@ const Main = () => {
           }
           .searchTextField {
             width: 498px;
-            height: 40px;
           }
           .second-container {
             background-color: #f2f2f2;
             display: flex;
             justify-content: center;
-            height: 500px;
+            height: 52%;
           }
           .col {
             margin: 80px 25px;
@@ -141,6 +163,8 @@ const Main = () => {
           }
           .icon {
             margin-left: 15px;
+            width: 100px;
+            height: 80px;
           }
         `}
       </style>
