@@ -8,7 +8,9 @@ const Question = () => {
       <QuestionType />
 
       <div className="row">
-        <div className="col-8">이미지 첨부</div>
+        <div className="col-8">
+          <div className="question-image">이미지를 첨부하세요</div>
+        </div>
         <div className="col-4">
           <AnswerInput />
         </div>
@@ -17,6 +19,15 @@ const Question = () => {
       <style jsx>{`
         .question-root {
           width: 100%;
+          padding-bottom: 5%;
+        }
+        .question-image {
+          width: 100%;
+          height: 100%;
+          background-color: #f2f2f2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       `}</style>
     </div>
