@@ -35,7 +35,7 @@ const Login = () => {
       <div className="container">
         <p>시험관리 온라인 서비스</p>
         <div className="col" align="center">
-          <img className="testyImg" src={TestyImg} />
+          <img className="testy-img" src={TestyImg} />
           <div className="row">
             <TextField
               onChange={handleValueChange}
@@ -67,7 +67,7 @@ const Login = () => {
                 border: 'none',
                 borderRadius: '22px',
               }}>
-              <span className="loginButtonText">로그인</span>
+              <span className="button-text">로그인</span>
             </Button>
           </div>
         </div>
@@ -80,7 +80,7 @@ const Login = () => {
             height: 100vh;
             background-size: cover;
           }
-          .testyImg {
+          .testy-img {
             margin-bottom: 40px;
           }
           p {
@@ -99,7 +99,7 @@ const Login = () => {
             margin-top: 10px;
             margin-bottom: 48px;
           }
-          .loginButtonText {
+          .button-text {
             color: #4ca2c5;
             font-weight: bold;
           }

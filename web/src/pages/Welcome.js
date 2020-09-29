@@ -9,21 +9,21 @@ const Welcome = () => {
   return (
     <div className="bg">
       <div className="container">
-        <div className="profileCircle" />
+        <div className="profile-circle" />
         <div className="col">
           <div className="row">
             <div className="title">홍길동 학생, 어서오세요!</div>
           </div>
           <div className="row">
-            <div className="classTitle">CLASS</div>
+            <div className="class-title">CLASS</div>
             <div>둘리반 심화</div>
           </div>
           <div className="row">
-            <div className="testName">시험명</div>
+            <div className="test-name">시험명</div>
             <div>국어 {'>'} 문법 심화</div>
           </div>
           <div className="row">
-            <div className="testTime">시험시간</div>
+            <div className="test-time">시험시간</div>
             <div>60분</div>
           </div>
           <div className="row">
@@ -37,7 +37,7 @@ const Welcome = () => {
                 border: 'none',
                 borderRadius: '22px',
               }}>
-              <span className="startButtonText">시험시작</span>
+              <span className="button-text">시험시작</span>
             </Button>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Welcome = () => {
             margin-top: 120px;
             width: 350px;
           }
-          .profileCircle {
+          .profile-circle {
             width: 100px;
             height: 100px;
             border-radius: 75px;
@@ -70,15 +70,15 @@ const Welcome = () => {
             color: #ffffff;
             white-space: pre;
           }
-          .classTitle {
+          .class-title {
             margin-left: 40px;
             margin-right: 70px;
           }
-          .testName {
+          .test-name {
             margin-left: 48px;
             margin-right: 70px;
           }
-          .testTime {
+          .test-time {
             margin-left: 33px;
             margin-right: 63px;
           }
@@ -102,7 +102,7 @@ const Welcome = () => {
             letter-spacing: -1.7px;
             color: #ffffff;
           }
-          .startButtonText {
+          .button-text {
             font-weight: bold;
           }
         `}
