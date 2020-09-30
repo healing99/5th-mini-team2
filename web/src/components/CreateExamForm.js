@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
 import { REG_EXP } from '@/const/RegExp';
+import classNames from 'classnames';
 
 const CreateExamForm = ({ openModal }) => {
   const submitButton = useRef();
@@ -44,8 +45,8 @@ const CreateExamForm = ({ openModal }) => {
   };
 
   return (
-    <div className="bg-light">
-      <nav className="container navbar navbar-light">
+    <div className="form-wrapper">
+      <nav className={classNames('container', 'navbar')}>
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-3">
@@ -63,7 +64,7 @@ const CreateExamForm = ({ openModal }) => {
                 label="시간 입력"
               />
             </div>
-            <div className="col">
+            <div className={classNames('col', 'btn-wrapper')}>
               <Button ref={submitButton} type="submit" color="primary" onClick={openModal}>
                 링크 생성
               </Button>
@@ -72,13 +73,24 @@ const CreateExamForm = ({ openModal }) => {
         </form>
       </nav>
 
-      <style jsx>
+      <style jsx global>
         {`
           .navbar {
-            padding: 1.5rem 1rem;
+            padding: 1rem 0 !important;
           }
-          .container {
-            min-width: 800px;
+          .form-wrapper {
+            background-color: #b0d5e5;
+            color: #fff;
+          }
+          .form-wrapper label {
+            font-weight: bold;
+          }
+          .form-wrapper input {
+            border-radius: 24px;
+          }
+          .btn-wrapper {
+            display: flex;
+            justify-content: center;
           }
         `}
       </style>

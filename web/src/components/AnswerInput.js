@@ -61,8 +61,7 @@ const AnswerInput = () => {
       <style jsx>
         {`
           .answer-form {
-            width: 326px;
-            height: 444px;
+            height: 400px;
             border: solid 1px #707070;
           }
           .answer-form__nav {

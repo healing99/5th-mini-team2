@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import CreateExamForm from '@/components/CreateExamForm';
 import Question from '@/components/Question';
-import Button from '@/components/Button';
 import Modal from '@/components/Modal';
-/**
- * @todo 임시 data를 받아 question component에 넘겨준다.
- */
+
 
 const Create = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
