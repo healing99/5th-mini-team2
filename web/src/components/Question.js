@@ -28,6 +28,7 @@ const Question = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          border: solid 1px #707070;
         }
         .input { 
           margin-top: 24px;

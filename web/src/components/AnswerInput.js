@@ -1,5 +1,4 @@
 import React, { useCallback, useRef, useState } from 'react';
-import Button from './Button';
 import AnswerItem from './AnswerItem';
 
 const AnswerInput = () => {
@@ -28,7 +27,7 @@ const AnswerInput = () => {
 
   const nextId = useRef(6);
 
-  const onInsert = useCallback(() => {
+  const handleInsert = useCallback(() => {
     const answer = {
       id: nextId.current,
       checked: false,
@@ -37,12 +36,13 @@ const AnswerInput = () => {
     nextId.current += 1;
   }, [answers]);
 
-  const onToggle = useCallback(
+  const handleToggle = useCallback(
     (id) => {
       setAnswers(answers.map((answer) => (answer.id === id ? { ...answer, checked: !answer.checked } : answer)));
     },
     [answers]
   );
+
 
   return (
     <div className="answer-form">
@@ -51,9 +51,11 @@ const AnswerInput = () => {
       </div>
       <div className="answer-form__content">
         {answers.map((answer) => (
-          <AnswerItem key={answer.id} answer={answer} onToggle={onToggle} />
+          <AnswerItem key={answer.id} answer={answer} onToggle={handleToggle} />
         ))}
-        <Button onClick={onInsert}>번호추가+</Button>
+        <div onClick={handleInsert} className="answer-form__btn">
+          + 번호추가
+        </div>
       </div>
 
       <style jsx>
@@ -61,11 +63,11 @@ const AnswerInput = () => {
           .answer-form {
             width: 326px;
             height: 444px;
-            background-color: #f2f2f2;
+            border: solid 1px #707070;
           }
           .answer-form__nav {
             height: 50px;
-            background-color: #d4d4d4;
+            background-color: #4893c4;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -73,12 +75,17 @@ const AnswerInput = () => {
           .answer-form__title {
             width: 100%;
             font-size: 16px;
-            color: #6c6c6c;
+            color: #fff;
             margin: 0;
             text-align: center;
           }
           .answer-form__content {
             padding: 33px 51px;
+          }
+          .answer-form__btn {
+            color: #707070;
+            cursor: pointer;
+            margin-top: 16px;
           }
         `}
       </style>
