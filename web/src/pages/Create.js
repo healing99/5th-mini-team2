@@ -23,17 +23,19 @@ const Create = () => {
       <div className="main-pad" />
 
       <main className="container">
-        {[1, 2, 3, 4, 5].map((_, idx) => (
+        {[1].map((_, idx) => (
           <Question key={idx} />
         ))}
         <div className="add-button">
-          <Button>문제추가</Button>
+          <button type="button" className="btn btn-outline-primary rounded-pill">
+            문제 추가
+          </button>
         </div>
       </main>
 
       <Modal isModalOpen={isModalOpen} closeModal={closeModal} />
 
-      <style jsx>{`
+      <style jsx global>{`
         .main-pad {
           padding-top: 64px;
         }
