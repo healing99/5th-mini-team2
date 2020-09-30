@@ -7,7 +7,7 @@ const Question = () => {
     <div className="question-root">
       <QuestionType />
 
-      <div className="row">
+      <div className="row input">
         <div className="col-8">
           <div className="question-image">이미지를 첨부하세요</div>
         </div>
@@ -28,6 +28,9 @@ const Question = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+        .input { 
+          margin-top: 24px;
         }
       `}</style>
     </div>

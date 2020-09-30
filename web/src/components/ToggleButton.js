@@ -8,25 +8,23 @@ const ToggleButton = ({ children, checked = false, name, onChange = null }) => {
       <input type="radio" name={name} checked={checked} onChange={onChange} />
       <span>{children}</span>
 
-      <style jsx>
+      <style jsx global>
         {`
           input[type='radio'] {
             display: none;
           }
-
           input[type='radio'] + span {
-            width: 150px;
-            height: 53px;
+            width: 130px;
             display: inline-block;
             background: none;
             text-align: center;
-            line-height: 50px;
-            font-weight: 500;
             cursor: pointer;
+            padding: 10px;
+            color: #707070;
+            font-weight: 500;
           }
-
           .checked {
-            background: #f2f2f2;
+            background: #b0d5e5;
           }
           .toggle-label {
             border-radius: 27px;
