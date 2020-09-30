@@ -28,7 +28,7 @@ const Create = () => {
         ))}
         <div className="add-button">
           <button type="button" className="btn btn-outline-primary rounded-pill">
-            문제 추가
+            + 문제 추가
           </button>
         </div>
       </main>
