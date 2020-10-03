@@ -2,12 +2,27 @@ import React from 'react';
 
 function CurrentRemainQuestion(props) {
   return (
-    <div className="wrapper">
+    <div className="remain-wrapper">
       <span className="current">현재 {props.current || '00'}문제 </span>
-      <span className="remain">|</span>
-      <span className="remain">남은 {props.remain || '00'}문제 </span>
+      <span className="dash remaining">|</span>
+      <span className="remaining">남은 {props.remain || '00'}문제 </span>
 
-      <style jsx>
+      <style jsx>{`
+        .remain-wrapper {
+          padding: 8px 16px;
+          background-color: #b0d5e5;
+        }
+        .current {
+          color: #fff;
+        }
+        .remaining {
+          color: #6c6c6c;
+        }
+        .dash {
+          padding: 0px 8px;
+        }
+      `}</style>
+      {/* <style jsx>
         {`
                 .current{
                     padding: 0px 10px 0px 5px;
@@ -37,7 +52,7 @@ function CurrentRemainQuestion(props) {
                     text-align: left;
                     color: #6c6c6c;
                 `}
-      </style>
+      </style> */}
     </div>
   );
 }
