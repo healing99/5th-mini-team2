@@ -45,33 +45,31 @@ const CreateExamForm = ({ openModal }) => {
   };
 
   return (
-    <div className="form-wrapper">
-      <nav className={classNames('container', 'navbar')}>
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-3">
-              <TextField onChange={handleValueChange} value={inputs.lecture} name="lecture" label="클래스명 입력" />
-            </div>
-            <div className="col-4">
-              <TextField onChange={handleValueChange} value={inputs.subject} name="subject" label="제목 입력" />
-            </div>
-            <div className="col-3">
-              <TextField
-                pattern={REG_EXP.Number}
-                onChange={handleValueChange}
-                value={inputs.time}
-                name="time"
-                label="시간 입력"
-              />
-            </div>
-            <div className={classNames('col', 'btn-wrapper')}>
-              <Button ref={submitButton} type="submit" color="primary" onClick={openModal}>
-                링크 생성
+    <nav className="form-wrapper">
+      <div className={classNames('container', 'navbar')}>
+        <form onSubmit={handleSubmit} className="row">
+          <div className="col-3">
+            <TextField onChange={handleValueChange} value={inputs.lecture} name="lecture" label="클래스명 입력" />
+          </div>
+          <div className="col-4">
+            <TextField onChange={handleValueChange} value={inputs.subject} name="subject" label="제목 입력" />
+          </div>
+          <div className="col-3">
+            <TextField
+              pattern={REG_EXP.Number}
+              onChange={handleValueChange}
+              value={inputs.time}
+              name="time"
+              label="시간 입력"
+            />
+          </div>
+          <div className={classNames('col', 'btn-wrapper')}>
+            <Button ref={submitButton} type="submit" color="primary" onClick={openModal}>
+              링크 생성
               </Button>
-            </div>
           </div>
         </form>
-      </nav>
+      </div>
 
       <style jsx global>
         {`
@@ -94,7 +92,7 @@ const CreateExamForm = ({ openModal }) => {
           }
         `}
       </style>
-    </div>
+    </nav>
   );
 };
 
