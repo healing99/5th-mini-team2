@@ -10,7 +10,7 @@ function QuestionInfo({ classTitle = '기본 이름', testName = '기본 시험�
             <span className="rounded-box">CLASS</span>
             <span className="text">{classTitle}</span>
           </div>
-          <div className="col-4">
+          <div className="col-6">
             <span className="rounded-box">시험 종목</span>
             <span className="text">{testName}</span>
           </div>
@@ -21,6 +21,9 @@ function QuestionInfo({ classTitle = '기본 이름', testName = '기본 시험�
         </div>
       </div>
       <style jsx>{`
+        .container {
+          justify-content: space-evenly;
+        }
         .wrapper {
           height: 70px;
           background-color: #b0d5e5;
