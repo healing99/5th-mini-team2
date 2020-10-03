@@ -79,6 +79,7 @@ const CreateExamForm = ({ openModal }) => {
           .form-wrapper {
             background-color: #b0d5e5;
             color: #fff;
+            height: 70px;
           }
           .form-wrapper label {
             font-weight: bold;
