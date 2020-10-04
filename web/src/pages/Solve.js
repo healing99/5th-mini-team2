@@ -3,11 +3,13 @@ import ExamInfo from '@/components/ExamInfo';
 import ExamRemaining from '@/components/ExamRemaining';
 import ExamImage from '@/components/ExamImage';
 import OMR from '@/components/OMR';
+import connectStore from '@/hoc/connectStore';
 
-const Solve = () => {
+const Solve = ({ exam }) => {
   return (
     <div className="solve">
-      <ExamInfo />
+      <ExamInfo info={exam.info} />
+
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
@@ -19,7 +21,7 @@ const Solve = () => {
             <ExamImage />
           </div>
           <div className="col-3 omr">
-            <OMR />
+            <OMR exam={exam} />
           </div>
         </div>
         <div className="row button-wrapper">
@@ -78,4 +80,4 @@ const Solve = () => {
   );
 };
 
-export default Solve;
+export default connectStore(Solve);

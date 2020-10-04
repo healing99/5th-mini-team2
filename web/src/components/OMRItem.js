@@ -1,13 +1,23 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { QUESTION_TYPES } from '@/const';
+import shortid from 'shortid';
+import connectStore from '@/hoc/connectStore';
 
-const OMRItem = ({ type, num }) => {
-  const getMultipleChoices = (num) => (
+const OMRItem = ({ question, idx, actions }) => {
+  const isSelected = (value) => question.answer.findIndex((answer) => answer === value) >= 0;
+
+  const getMultipleChoices = (numChoices) => (
     <div>
-      {Array(num)
+      {Array(numChoices)
         .fill(0)
-        .map((_, idx) => (
-          <span key={idx} className="dot" />
+        .map((_, answerIdx) => (
+          <span
+            onClick={() => actions.markAnswer(idx, answerIdx, !isSelected(answerIdx))}
+            key={shortid()}
+            className={classNames('dot', isSelected(answerIdx) && 'selected')}
+          />
         ))}
     </div>
   );
@@ -18,12 +28,13 @@ const OMRItem = ({ type, num }) => {
   );
 
   const getItem = () => {
-    if (type === 0) return getMultipleChoices(5);
-    if (type === 1) return getShortAnswer();
+    if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) return getMultipleChoices(question.numChoices);
+    return getShortAnswer();
   };
+
   return (
     <div className="omr-item">
-      <span className="num text-center">{num}</span>
+      <span className="num text-center">{idx + 1}</span>
       {getItem()}
       <style jsx global>{`
         .omr-item {
@@ -69,7 +80,8 @@ const OMRItem = ({ type, num }) => {
 };
 
 OMRItem.propTypes = {
-  num: PropTypes.number.isRequired,
-  type: PropTypes.number.isRequired,
+  question: PropTypes.object.isRequired,
+  idx: PropTypes.number,
 };
-export default OMRItem;
+
+export default connectStore(OMRItem);

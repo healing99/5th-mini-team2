@@ -1,20 +1,18 @@
 import React from 'react';
 import OMRItem from './OMRItem';
+import shortid from 'shortid';
 
-const OMR = () => {
+const OMR = ({ exam }) => {
+  const omrItemList = () =>
+    exam.questions.map((question, idx) => <OMRItem key={shortid()} idx={idx} question={question} />);
+
   return (
     <div className="omr">
       <div className="title">
         <span>OMR</span>
       </div>
-      <div className="items">
-        <OMRItem num={2} type={1} />
-        <OMRItem num={1} type={0} />
-        <OMRItem num={1} type={0} />
-        <OMRItem num={1} type={0} />
-        <OMRItem num={1} type={0} />
-        <OMRItem num={1} type={0} />
-      </div>
+      <div className="items">{omrItemList()}</div>
+
       <style jsx>{`
         .omr {
           border: solid 1px #707070;

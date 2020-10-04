@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const ExamInfo = ({ classTitle = '기본 이름', testName = '기본 시험지', testTime = '기본 시간' }) => {
+const ExamInfo = ({info}) => {
+  const { classTitle, testName, testTime } = info;
+  
   return (
     <nav className="exam-info">
       <div className={classNames('container', 'navbar')}>
@@ -59,4 +62,9 @@ const ExamInfo = ({ classTitle = '기본 이름', testName = '기본 시험지',
   );
 };
 
+ExamInfo.propTypes = {
+  classTitle: PropTypes.string,
+  testName: PropTypes.string,
+  testTime: PropTypes.string,
+};
 export default ExamInfo;
