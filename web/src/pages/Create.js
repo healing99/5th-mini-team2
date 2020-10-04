@@ -3,7 +3,6 @@ import CreateExamForm from '@/components/CreateExamForm';
 import Question from '@/components/Question';
 import Modal from '@/components/Modal';
 
-
 const Create = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -15,12 +14,12 @@ const Create = () => {
   };
 
   return (
-    <div>
+    <div className="create">
       <CreateExamForm openModal={openModal} />
-      <div className="main-pad" />
+      <div className="pad" />
 
       <main className="container">
-        {[1].map((_, idx) => (
+        {[1, 2, 3, 4, 5].map((_, idx) => (
           <Question key={idx} />
         ))}
         <div className="add-button">
@@ -33,13 +32,16 @@ const Create = () => {
       <Modal isModalOpen={isModalOpen} closeModal={closeModal} />
 
       <style jsx global>{`
-        .main-pad {
-          padding-top: 64px;
+        .create {
+          min-height: 100vh;
         }
-        .container {
+        .create .container {
           padding-bottom: 64px;
         }
-        .add-button {
+        .create .pad {
+          padding-top: 64px;
+        }
+        .create .add-button {
           display: flex;
           align-items: center;
           justify-content: center;

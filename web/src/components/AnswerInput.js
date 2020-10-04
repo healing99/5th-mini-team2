@@ -43,6 +43,8 @@ const AnswerInput = () => {
     [answers]
   );
 
+  const answerList = () =>
+    answers.map((answer) => <AnswerItem key={answer.id} answer={answer} onToggle={handleToggle} />);
 
   return (
     <div className="answer-form">
@@ -50,9 +52,7 @@ const AnswerInput = () => {
         <p className="answer-form__title">채점용 정답 입력</p>
       </div>
       <div className="answer-form__content">
-        {answers.map((answer) => (
-          <AnswerItem key={answer.id} answer={answer} onToggle={handleToggle} />
-        ))}
+        {answerList()}
         <div onClick={handleInsert} className="answer-form__btn">
           + 번호추가
         </div>
@@ -79,7 +79,9 @@ const AnswerInput = () => {
             text-align: center;
           }
           .answer-form__content {
-            padding: 33px 51px;
+            padding: 32px 48px;
+            height: 347px;
+            overflow: auto;
           }
           .answer-form__btn {
             color: #707070;

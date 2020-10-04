@@ -5,7 +5,7 @@ import DeleteIcon from '@/assets/images/delete.png';
 
 const Question = ({ num = 0 }) => {
   return (
-    <div className="question-root">
+    <div className="question">
       <QuestionType />
 
       <p className="title">문제 {num}</p>
@@ -25,14 +25,17 @@ const Question = ({ num = 0 }) => {
       </div>
 
       <style jsx>{`
-        .add { 
-          font-size: 28px;
-        }
-        .question-root {
+        .question {
           width: 100%;
           padding-bottom: 5%;
         }
-        .question-image {
+        .question .title {
+          margin-top: 20px;
+          font-weight: 600;
+          color: #707070;
+          font-size: 18px;
+        }
+        .question .question-image {
           width: 100%;
           height: 100%;
           background-color: #f2f2f2;
@@ -43,20 +46,14 @@ const Question = ({ num = 0 }) => {
           color: #707070;
           text-align: center;
         }
-        .question-image > div {
+        .question .question-image > div {
           cursor: pointer;
         }
-        .question-image .delete {
+        .question .question-image .delete {
           position: absolute;
           right: 32px;
           bottom: 16px;
           cursor: pointer;
-        }
-        .title {
-          margin-top: 20px;
-          font-weight: 600;
-          color: #707070;
-          font-size: 18px;
         }
       `}</style>
     </div>

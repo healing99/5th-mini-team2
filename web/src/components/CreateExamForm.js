@@ -45,7 +45,7 @@ const CreateExamForm = ({ openModal }) => {
   };
 
   return (
-    <nav className="form-wrapper">
+    <nav className="exam-form">
       <div className={classNames('container', 'navbar')}>
         <form onSubmit={handleSubmit} className="row">
           <div className="col-3">
@@ -66,28 +66,28 @@ const CreateExamForm = ({ openModal }) => {
           <div className={classNames('col', 'btn-wrapper')}>
             <Button ref={submitButton} type="submit" color="primary" onClick={openModal}>
               링크 생성
-              </Button>
+            </Button>
           </div>
         </form>
       </div>
 
       <style jsx global>
         {`
-          .navbar {
-            padding: 1rem 0 !important;
-          }
-          .form-wrapper {
+          .exam-form {
             background-color: #b0d5e5;
             color: #fff;
             height: 70px;
           }
-          .form-wrapper label {
+          .exam-form .navbar {
+            padding: 1rem 0 !important;
+          }
+          .exam-form label {
             font-weight: bold;
           }
-          .form-wrapper input {
+          .exam-form input {
             border-radius: 24px;
           }
-          .btn-wrapper {
+          .exam-form .btn-wrapper {
             display: flex;
             justify-content: center;
           }
