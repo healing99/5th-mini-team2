@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
-import { REG_EXP } from '@/const/RegExp';
+import { REG_EXP } from '@/const';
 import classNames from 'classnames';
 
 const CreateExamForm = ({ openModal }) => {
@@ -56,7 +56,7 @@ const CreateExamForm = ({ openModal }) => {
           </div>
           <div className="col-3">
             <TextField
-              pattern={REG_EXP.Number}
+              pattern={REG_EXP.NUMBER}
               onChange={handleValueChange}
               value={inputs.time}
               name="time"

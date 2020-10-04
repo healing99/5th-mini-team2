@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
-import { REG_EXP } from '@/const/RegExp';
+import { REG_EXP } from '@/const';
 import TestyImg from '@/assets/images/testy.png';
 import backgroundImg from '@/assets/images/background.png';
 
@@ -48,7 +48,7 @@ const Login = () => {
           <div className="row">
             <TextField
               onChange={handleValueChange}
-              pattern={REG_EXP.Number}
+              pattern={REG_EXP.NUMBER}
               value={inputs.classCode}
               name="classCode"
               placeholder="학원코드입력"
