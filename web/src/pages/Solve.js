@@ -1,7 +1,7 @@
 import React from 'react';
 import ExamInfo from '@/components/ExamInfo';
-import CurrentRemainQuestion from '@/components/CurrentRemainQuestion';
-import QuestionImg from '@/components/QuestionImg';
+import ExamRemaining from '@/components/ExamRemaining';
+import ExamImage from '@/components/ExamImage';
 import OMR from '@/components/OMR';
 
 const Solve = () => {
@@ -11,12 +11,12 @@ const Solve = () => {
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
-            <CurrentRemainQuestion current={12} remain={6} />
+            <ExamRemaining current={12} remain={6} />
           </div>
         </div>
         <div className="row question-input">
           <div className="col-9 question-img">
-            <QuestionImg />
+            <ExamImage />
           </div>
           <div className="col-3 omr">
             <OMR />
