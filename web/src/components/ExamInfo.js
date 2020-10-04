@@ -1,41 +1,50 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function QuestionInfo({ classTitle = '기본 이름', testName = '기본 시험지', testTime = '기본 시간' }) {
+const ExamInfo = ({ classTitle = '기본 이름', testName = '기본 시험지', testTime = '기본 시간' }) => {
   return (
-    <nav className="wrapper">
+    <nav className="exam-info">
       <div className={classNames('container', 'navbar')}>
         <div className={classNames('title-root', 'row')}>
-          <div className="col-3">
+          <div className="col-3 item">
             <span className="rounded-box">CLASS</span>
             <span className="text">{classTitle}</span>
           </div>
-          <div className="col-6">
+          <div className="col-6 item">
             <span className="rounded-box">시험 종목</span>
             <span className="text">{testName}</span>
           </div>
-          <div className="col-3">
+          <div className="col-3 item">
             <span className="rounded-box">시험 시간</span>
             <span className="text">{testTime}</span>
           </div>
         </div>
       </div>
       <style jsx>{`
-        .container {
-          justify-content: space-evenly;
-        }
-        .wrapper {
+        .exam-info {
           height: 70px;
           background-color: #b0d5e5;
           color: #fff;
-        }  
-        .container {
-          height: 100%;
         }
-        .title-root { 
+        .exam-info .container {
+          justify-content: space-between;
+          height: 100%;
+          padding: 0;
+        }
+        .exam-info .title-root {
           width: 100%;
         }
-        .rounded-box { 
+        .exam-info .item:first-child {
+          text-align: left;
+        }
+        .exam-info .item:last-child {
+          text-align: right;
+          padding-right: 0;
+        }
+        .exam-info .item:nth-child(2) {
+          text-align: center;
+        }
+        .rounded-box {
           border-radius: 24px;
           background-color: #fff;
           color: #6c6c6c;
@@ -48,6 +57,6 @@ function QuestionInfo({ classTitle = '기본 이름', testName = '기본 시험�
       `}</style>
     </nav>
   );
-}
+};
 
-export default QuestionInfo;
+export default ExamInfo;

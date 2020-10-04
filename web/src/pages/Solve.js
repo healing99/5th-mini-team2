@@ -1,5 +1,5 @@
 import React from 'react';
-import QuestionInfo from '@/components/QuestionInfo';
+import ExamInfo from '@/components/ExamInfo';
 import CurrentRemainQuestion from '@/components/CurrentRemainQuestion';
 import QuestionImg from '@/components/QuestionImg';
 import OMR from '@/components/OMR';
@@ -7,7 +7,7 @@ import OMR from '@/components/OMR';
 const Solve = () => {
   return (
     <div className="solve">
-      <QuestionInfo />
+      <ExamInfo />
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
