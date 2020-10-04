@@ -11,7 +11,7 @@ const Solve = () => {
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
-            <CurrentRemainQuestion />
+            <CurrentRemainQuestion current={12} remain={6} />
           </div>
         </div>
         <div className="row question-input">

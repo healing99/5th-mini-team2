@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function CurrentRemainQuestion(props) {
+function CurrentRemainQuestion({ current, remain }) {
   return (
     <div className="remain-wrapper">
-      <span className="current">현재 {props.current || '00'}문제 </span>
+      <span className="current">현재 {current}문제 </span>
       <span className="dash remaining">|</span>
-      <span className="remaining">남은 {props.remain || '00'}문제 </span>
+      <span className="remaining">남은 {remain}문제 </span>
 
       <style jsx>{`
         .remain-wrapper {
@@ -27,4 +28,8 @@ function CurrentRemainQuestion(props) {
   );
 }
 
+CurrentRemainQuestion.propTypes = {
+  current: PropTypes.number.isRequired,
+  remain: PropTypes.number.isRequired,
+};
 export default CurrentRemainQuestion;
