@@ -2,16 +2,22 @@ import React, { useState } from 'react';
 import CreateExamForm from '@/components/CreateExamForm';
 import Question from '@/components/Question';
 import Modal from '@/components/Modal';
+import connectStore from '@/hoc/connectStore';
 
-const Create = () => {
+const Create = ({ questions, actions }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
   };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const questionList = () =>
+    questions.map((question, idx) => <Question idx={idx} key={question.id} question={question} />);
+
 
   return (
     <div className="create">
@@ -19,11 +25,9 @@ const Create = () => {
       <div className="pad" />
 
       <main className="container">
-        {[1, 2, 3, 4, 5].map((_, idx) => (
-          <Question key={idx} />
-        ))}
+        {questionList()}
         <div className="add-button">
-          <button type="button" className="btn btn-outline-primary rounded-pill">
+          <button onClick={() => actions.addQuestion()} type="button" className="btn btn-outline-primary rounded-pill">
             + 문제 추가
           </button>
         </div>
@@ -51,4 +55,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default connectStore(Create);

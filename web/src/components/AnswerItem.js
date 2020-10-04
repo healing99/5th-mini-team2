@@ -1,13 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const AnswerItem = ({ answer, onToggle }) => {
-  const { checked, id } = answer;
+const AnswerItem = ({ onToggle, checked, answerIdx }) => {
   return (
-    <div className="answer-listitem" onClick={() => onToggle(id)}>
+    <div className="answer-listitem" onClick={() => onToggle(answerIdx)}>
       <div>
         <span className={classNames('dot', checked && 'selected')} />
-        <p>{id}</p>
+        <p>{answerIdx + 1}</p>
       </div>
 
       <style jsx>
@@ -38,6 +38,12 @@ const AnswerItem = ({ answer, onToggle }) => {
       </style>
     </div>
   );
+};
+
+AnswerItem.propTypes = {
+  answer: PropTypes.object,
+  onToggle: PropTypes.func,
+  checked: PropTypes.bool,
 };
 
 export default AnswerItem;

@@ -1,14 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AnswerInput from './AnswerInput';
 import QuestionType from './QuestionType';
 import DeleteIcon from '@/assets/images/delete.png';
+import connectStore from '@/hoc/connectStore';
 
-const Question = ({ num = 0 }) => {
+const Question = ({ idx, question, actions }) => {
   return (
     <div className="question">
-      <QuestionType />
+      <QuestionType idx={idx} type={question.type} />
 
-      <p className="title">문제 {num}</p>
+      <p className="title">문제 {idx + 1}</p>
       <div className="row">
         <div className="col-8">
           <div className="question-image">
@@ -16,11 +18,11 @@ const Question = ({ num = 0 }) => {
               <span className="add">+</span>
               <p>이미지를 첨부하세요.</p>
             </div>
-            <img className="delete" src={DeleteIcon} />
+            <img className="delete" src={DeleteIcon} onClick={() => actions.removeQuestion(idx)} />
           </div>
         </div>
         <div className="col-4">
-          <AnswerInput />
+          <AnswerInput idx={idx} answer={question.answer} numChoices={question.numChoices} />
         </div>
       </div>
 
@@ -60,4 +62,8 @@ const Question = ({ num = 0 }) => {
   );
 };
 
-export default Question;
+Question.propTypes = {
+  idx: PropTypes.number.isRequired,
+  question: PropTypes.object.isRequired,
+};
+export default connectStore(Question);

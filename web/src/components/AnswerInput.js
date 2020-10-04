@@ -1,50 +1,22 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AnswerItem from './AnswerItem';
+import connectStore from '@/hoc/connectStore';
 
-const AnswerInput = () => {
-  const [answers, setAnswers] = useState([
-    {
-      id: 1,
-      checked: false,
-    },
-    {
-      id: 2,
-      checked: false,
-    },
-    {
-      id: 3,
-      checked: false,
-    },
-    {
-      id: 4,
-      checked: false,
-    },
-    {
-      id: 5,
-      checked: false,
-    },
-  ]);
+const AnswerInput = ({ answer, numChoices, idx, actions }) => {
+  const isAnswer = (value) => answer.findIndex((item) => item === value) >= 0;
 
-  const nextId = useRef(6);
-
-  const handleInsert = useCallback(() => {
-    const answer = {
-      id: nextId.current,
-      checked: false,
-    };
-    setAnswers(answers.concat(answer));
-    nextId.current += 1;
-  }, [answers]);
-
-  const handleToggle = useCallback(
-    (id) => {
-      setAnswers(answers.map((answer) => (answer.id === id ? { ...answer, checked: !answer.checked } : answer)));
-    },
-    [answers]
-  );
-
-  const answerList = () =>
-    answers.map((answer) => <AnswerItem key={answer.id} answer={answer} onToggle={handleToggle} />);
+  const multipleChoiceList = () =>
+    Array(numChoices)
+      .fill(0)
+      .map((_, answerIdx) => (
+        <AnswerItem
+          key={answerIdx}
+          checked={isAnswer(answerIdx)}
+          answerIdx={answerIdx}
+          onToggle={() => actions.toggleAnswer(idx, answerIdx, !isAnswer(answerIdx))}
+        />
+      ));
 
   return (
     <div className="answer-form">
@@ -52,8 +24,8 @@ const AnswerInput = () => {
         <p className="answer-form__title">채점용 정답 입력</p>
       </div>
       <div className="answer-form__content">
-        {answerList()}
-        <div onClick={handleInsert} className="answer-form__btn">
+        {multipleChoiceList()}
+        <div onClick={() => actions.addAnswer(idx, numChoices + 1)} className="answer-form__btn">
           + 번호추가
         </div>
       </div>
@@ -94,4 +66,9 @@ const AnswerInput = () => {
   );
 };
 
-export default AnswerInput;
+AnswerInput.propTypes = {
+  numChoices: PropTypes.number.isRequired,
+  idx: PropTypes.number,
+};
+
+export default connectStore(AnswerInput);
