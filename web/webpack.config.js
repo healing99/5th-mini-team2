@@ -62,5 +62,5 @@ module.exports = {
     disableHostCheck: true,
     overlay: true,
   },
-  watch: process.env.NODE_ENV !== 'production',
+  watch: false,
 };
