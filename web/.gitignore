@@ -1,4 +1,6 @@
-dist/
+!dist/
+dist/*
+!dist/_redirects
 node_modules
 .vscode
 .DS_store
