@@ -5,7 +5,7 @@ import { QUESTION_TYPES } from '@/const';
 import shortid from 'shortid';
 import connectStore from '@/hoc/connectStore';
 
-const OMRItem = ({ question, idx, actions }) => {
+const OMRItem = ({ question, idx, actions, openModal }) => {
   const isSelected = (value) => question.answer.findIndex((answer) => answer === value) >= 0;
 
   const getMultipleChoices = (numChoices) => (
@@ -23,7 +23,7 @@ const OMRItem = ({ question, idx, actions }) => {
   );
   const getShortAnswer = () => (
     <div className="short-answer">
-      <p>직접입력</p>
+      <p onClick={openModal}>직접입력</p>
     </div>
   );
 

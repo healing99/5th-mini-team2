@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExamInfo from '@/components/ExamInfo';
 import ExamRemaining from '@/components/ExamRemaining';
 import ExamImage from '@/components/ExamImage';
 import OMR from '@/components/OMR';
 import connectStore from '@/hoc/connectStore';
+import OMRModal from '@/components/OMRModal';
 
 const Solve = ({ exam }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="solve">
       <ExamInfo info={exam.info} />
-
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
@@ -21,7 +31,7 @@ const Solve = ({ exam }) => {
             <ExamImage />
           </div>
           <div className="col-3 omr">
-            <OMR exam={exam} />
+            <OMR exam={exam} openModal={openModal} />
           </div>
         </div>
         <div className="row button-wrapper">
@@ -40,6 +50,8 @@ const Solve = ({ exam }) => {
           </div>
         </div>
       </main>
+
+      <OMRModal isModalOpen={isModalOpen} closeModal={closeModal} />
 
       <style jsx global>{`
         .solve {
