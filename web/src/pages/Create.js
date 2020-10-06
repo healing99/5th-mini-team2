@@ -18,7 +18,6 @@ const Create = ({ questions, actions }) => {
   const questionList = () =>
     questions.map((question, idx) => <Question idx={idx} key={question.id} question={question} />);
 
-
   return (
     <div className="create">
       <CreateExamForm openModal={openModal} />

@@ -11,6 +11,9 @@ const OMRModal = ({ isModalOpen, closeModal }) => {
           </button>
         </div>
         <div className="title">수식입력창</div>
+        <div className="input">
+          <div></div>
+        </div>
       </div>
 
       <style jsx>{`
@@ -50,6 +53,17 @@ const OMRModal = ({ isModalOpen, closeModal }) => {
           justify-content: center;
           align-items: center;
           background-color: #4893c4;
+        }
+        .omr-modal .input {
+          width: 100%;
+          height: 50%;
+          display: flex;
+          justify-content: center;
+          padding: 5%;
+        }
+        .omr-modal .input > div {
+          background-color: rgb(242, 242, 242);
+          width: 100%;
         }
       `}</style>
     </div>
