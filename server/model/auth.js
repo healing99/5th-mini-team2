@@ -36,20 +36,11 @@ const check = (userId, userPw) => {  // 유저 검증
     try {
       const userSql = `SELECT * FROM ds2team.User WHERE U_ID = ?`;
       const [user, userFields] = await promisePool.execute(userSql, [userId]);
-      if (user.length == 0) {
-        throw new Error('유저 정보가 없습니다.');
-      } else {
-        const { U_PW, U_FL } = user[0];
-        if (!bcrypt.compareSync(userPw, U_PW)) {
-          throw new Error('비밀번호가 틀립니다.');
-        } else {
-          if (U_FL == 'N') {
-            throw new Error('활성화 된 계정이 아닙니다.');
-          } else {
-            resolve({ 'status': 'success', 'msg': '정상 유저, Token 발급 절차 코드 추가 예정' });
-          }
-        }
-      }
+      if (user.length == 0) throw new Error('유저 정보가 없습니다.');
+      const { U_PW, U_FL } = user[0];
+      if (!bcrypt.compareSync(userPw, U_PW)) throw new Error('비밀번호가 틀립니다.');
+      if (U_FL == 'N') throw new Error('활성화 된 계정이 아닙니다.');
+      resolve({ 'status': 'success', 'msg': '정상 유저, Token 발급 절차 코드 추가 예정' });
     } catch (err) {
       reject(err);
     }

@@ -1,4 +1,3 @@
-const conn = require('./mysql/db_con').createCon();
 const pool = require('./mysql/db_con').createPool();
 const promisePool = pool.promise();
 const is = require('is-0');
@@ -17,10 +16,10 @@ const create = (E_PK, QUESTIONS) => {  // 무제 추가
         if (err) throw new Error('POOL Connection 생성에 실패했습니다.');
         conn.beginTransaction();
         try {
-          await ArrayExt.asyncForEach(QUESTIONS, async (Q, Qindex, Qarr) => {
+          await ArrayExt.asyncForEach(QUESTIONS, async (Q, Qindex) => {
             if (is.empty(Q.Q_TYPE)) throw new Error(`${Qindex + 1} 번의 Q_TYPE 항목이 없습니다.`);
             if (is.empty(Q.Q_EXT_TYPE)) throw new Error(`${Qindex + 1} 번의 Q_EXT_TYPE 항목이 없습니다.`);
-            if (is.empty(Q.Q_SCORE)) throw new Error(`${Qindex + 1} 번의 Q_SCORE 항목이 없습니다.`);
+            //if (is.empty(Q.Q_SCORE)) throw new Error(`${Qindex + 1} 번의 Q_SCORE 항목이 없습니다.`);
             if (is.empty(Q.ANSWERS)) throw new Error(`${Qindex + 1} 번의 ANSWERS 항목이 없습니다.`);
             const { Q_TYPE, Q_EXT_TYPE, Q_CONTENT, Q_IMAGE, Q_SCORE, ANSWERS } = Q;
             const questionSql = `INSERT INTO ds2team.Question (Q_PK, Q_E_PK, Q_TYPE, Q_EXT_TYPE, Q_CONTENT, Q_IMAGE, Q_ORDER, Q_SCORE) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;

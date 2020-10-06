@@ -23,12 +23,13 @@ app.use(logger('[:date] [:remote-addr] [:method HTTP/:http-version] [:status] [:
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const etcRouter = require('./routes/etc');
 const authRouter = require('./routes/auth');
+const subjectRouter = require('./routes/subject');
 const examRouter = require('./routes/exam');
 const questionRouter = require('./routes/question');
-app.use('/', etcRouter);
+
 app.use('/auth', authRouter);
+app.use('/subject', subjectRouter);
 app.use('/exam', examRouter);
 app.use('/question', questionRouter);
 

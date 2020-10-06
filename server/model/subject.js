@@ -5,7 +5,7 @@ const uuid = require('../utils/uuid');
 const subjectCreate = (S_NM) => {  // 과목 추가
   return new Promise(async (resolve, reject) => {
     try {
-      const RE_S_SM = S_NM.replace(' ', '');  // 과목 이름에 공백 제거
+      const RE_S_SM = S_NM.replace(/ /g, '');  // 과목 이름에 공백 제거
       const subjectSql = `SELECT * FROM ds2team.Subject WHERE S_NM = ?`;  // 과목 이름 있는지 없는지 검증 QUERY
       const [subjects, subjectsFields] = await promisePool.execute(subjectSql, [RE_S_SM]);
       if (subjects.length != 0) {
