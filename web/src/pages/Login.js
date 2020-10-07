@@ -42,7 +42,7 @@ const Login = () => {
               value={inputs.studentName}
               name="studentName"
               placeholder="이름"
-              style={{ width: '390px', height: '40px', borderRadius: '22px', margin: 'auto' }}
+              style={{ width: '390px', height: '40px', borderRadius: '22px', marginRight: '30px' }}
             />
           </div>
           <div className="row">
@@ -52,7 +52,7 @@ const Login = () => {
               value={inputs.classCode}
               name="classCode"
               placeholder="학원코드입력"
-              style={{ width: '390px', height: '40px', borderRadius: '22px', margin: 'auto' }}
+              style={{ width: '390px', height: '40px', borderRadius: '22px', marginRight: '30px' }}
             />
           </div>
           <div className="row justify-content-center">
