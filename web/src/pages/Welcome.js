@@ -15,15 +15,15 @@ const Welcome = () => {
             <div className="title">홍길동 학생, 어서오세요!</div>
           </div>
           <div className="row">
-            <div className="class-title">CLASS</div>
+            <div className="test-info">CLASS</div>
             <div>둘리반 심화</div>
           </div>
           <div className="row">
-            <div className="test-name">시험명</div>
+            <div className="test-info">시험명</div>
             <div>국어 {'>'} 문법 심화</div>
           </div>
           <div className="row">
-            <div className="test-time">시험시간</div>
+            <div className="test-info">시험시간</div>
             <div>60분</div>
           </div>
           <div className="row">
@@ -70,22 +70,15 @@ const Welcome = () => {
             color: #ffffff;
             white-space: pre;
           }
-          .class-title {
-            margin-left: 40px;
-            margin-right: 70px;
-          }
-          .test-name {
-            margin-left: 48px;
-            margin-right: 70px;
-          }
-          .test-time {
-            margin-left: 33px;
-            margin-right: 63px;
+          .test-info {
+            display: flex;
+            width: 45%;
+            justify-content: center;
           }
           .row:nth-child(2n) {
             background-color: #cee1e9;
             height: 43px;
-            padding: 8px;
+            padding-top: 8px;
             margin-top: 8px;
             margin-bottom: 10px;
             color: #707070;
