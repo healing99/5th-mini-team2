@@ -22,7 +22,7 @@ const Question = ({ idx, question, actions }) => {
           </div>
         </div>
         <div className="col-4">
-          <AnswerInput idx={idx} answer={question.answer} numChoices={question.numChoices} />
+          <AnswerInput idx={idx} answer={question.answer} numChoices={question.numChoices} type={question.type} />
         </div>
       </div>
 
