@@ -1,6 +1,7 @@
 {
   "name": "ds-2team-api",
-  "version": "0.0.4",
+  "version": "0.0.5",
+
   "private": true,
   "scripts": {
     "start": "nodemon ./app"
@@ -13,6 +14,7 @@
     "is-0": "^1.0.2",
     "moment": "^2.27.0",
     "morgan": "^1.10.0",
+    "multer": "^1.4.2",
     "mysql2": "^2.1.0",
     "uuid4": "^2.0.2"
   }

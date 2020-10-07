@@ -3,6 +3,7 @@ const express = require('express');
 const logger = require('morgan');
 const moment = require('moment');
 const dotenv = require('dotenv');
+const path = require('path');
 dotenv.config()
 const http = require('http');
 
@@ -22,16 +23,21 @@ logger.token('date', function () {
 app.use(logger('[:date] [:remote-addr] [:method HTTP/:http-version] [:status] [:res[content-length]] [:url] [:user-agent]'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, './public')));
 
 const authRouter = require('./routes/auth');
 const subjectRouter = require('./routes/subject');
 const examRouter = require('./routes/exam');
 const questionRouter = require('./routes/question');
+const imageRouter = require('./routes/image');
+const solveRouter = require('./routes/solve');
 
 app.use('/auth', authRouter);
 app.use('/subject', subjectRouter);
 app.use('/exam', examRouter);
 app.use('/question', questionRouter);
+app.use('/image', imageRouter);
+app.use('/solve', solveRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
