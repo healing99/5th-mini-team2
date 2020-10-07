@@ -21,18 +21,14 @@ const AnswerInput = ({ answer, numChoices, idx, actions, type }) => {
         />
       ));
 
-  const longAnswerForm = () => <LongAnswerItem />;
-
-  const shortAnswerForm = () => <ShortAnswerItem />;
-
   const getInput = () => {
     switch (type) {
       case QUESTION_TYPES.MULTIPLE_CHOICE:
         return multipleChoiceList();
       case QUESTION_TYPES.LONG_ANSWER:
-        return longAnswerForm();
+        return <LongAnswerItem />;
       case QUESTION_TYPES.SHORT_ANSWER:
-        return shortAnswerForm();
+        return <ShortAnswerItem />;
       default:
         return null;
     }
