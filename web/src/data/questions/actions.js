@@ -4,12 +4,6 @@ export const addQuestion = () => ({
   type: ActionTypes.ADD_QUESTION,
 });
 
-export const addAnswer = (idx, value) => ({
-  type: ActionTypes.ADD_ANSWER,
-  idx,
-  value,
-});
-
 export const changeQuestionType = (idx, checked) => ({
   type: ActionTypes.CHANGE_TYPE,
   idx,
