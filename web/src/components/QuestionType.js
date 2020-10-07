@@ -18,15 +18,15 @@ function QuestionType({ type, idx, actions }) {
       </ToggleButton>
 
       <ToggleButton
-        onChange={() => actions.changeQuestionType(idx, QUESTION_TYPES.SHORT_ANSWER)}
-        checked={type === QUESTION_TYPES.SHORT_ANSWER}>
+        onChange={() => actions.changeQuestionType(idx, QUESTION_TYPES.LONG_ANSWER)}
+        checked={type === QUESTION_TYPES.LONG_ANSWER}>
         <img className="toggle-img" src={LongAnswerIcon} width="20" />
         서술형
       </ToggleButton>
 
       <ToggleButton
-        onChange={() => actions.changeQuestionType(idx, QUESTION_TYPES.LONG_ANSWER)}
-        checked={type === QUESTION_TYPES.LONG_ANSWER}>
+        onChange={() => actions.changeQuestionType(idx, QUESTION_TYPES.SHORT_ANSWER)}
+        checked={type === QUESTION_TYPES.SHORT_ANSWER}>
         <img className="toggle-img" src={ShortAnswerIcon} width="20" />
         단답형
       </ToggleButton>
