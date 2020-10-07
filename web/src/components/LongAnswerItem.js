@@ -28,7 +28,7 @@ const LongAnswerItem = () => {
               linear-gradient(to left, white 10px, transparent 10px),
               repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
             line-height: 31px;
-            padding: 8px 10px;
+            padding: 4.5px 10px;
           }
         `}
       </style>
