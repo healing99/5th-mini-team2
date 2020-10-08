@@ -21,3 +21,9 @@ export const removeQuestion = (idx) => ({
   type: ActionTypes.REMOVE_QUESTION,
   idx,
 });
+
+export const addImage = (file, idx) => ({
+  type: ActionTypes.ADD_IMAGE_QUESTION,
+  file,
+  idx, 
+})

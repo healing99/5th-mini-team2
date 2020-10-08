@@ -51,6 +51,13 @@ const questions = (state = initState, action = {}) => {
     case ActionTypes.REMOVE_QUESTION:
       return update(state, { $splice: [[action.idx, 1]] });
 
+    case ActionTypes.ADD_IMAGE_QUESTION:
+      return update(state, {
+        [action.idx]: {
+          image: { $set: action.file },
+        },
+      });
+
     default:
       return state;
   }
