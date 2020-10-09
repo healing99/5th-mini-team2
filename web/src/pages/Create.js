@@ -3,7 +3,6 @@ import CreateExamForm from '@/components/CreateExamForm';
 import Question from '@/components/Question';
 import Modal from '@/components/Modal';
 import connectStore from '@/hoc/connectStore';
-
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 const Create = ({ questions, actions }) => {
@@ -18,7 +17,7 @@ const Create = ({ questions, actions }) => {
   };
 
   const onDragEnd = (result) => {
-    // dropped outside the list(리스트 밖으로 드랍한 경우)
+    // 리스트 밖으로 드랍한 경우
     if(!result.destination) {
       return;
     }
@@ -26,6 +25,7 @@ const Create = ({ questions, actions }) => {
     actions.reorderQuestion(result.source.index, result.destination.index)
   }
 
+  //Draggable 추가
   const questionList = () => {
     return questions.map((question, idx) => 
     <Draggable key={question.id} draggableId={question.id} index={idx}>
