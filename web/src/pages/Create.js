@@ -4,6 +4,8 @@ import Question from '@/components/Question';
 import Modal from '@/components/Modal';
 import connectStore from '@/hoc/connectStore';
 
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
 const Create = ({ questions, actions }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -15,9 +17,32 @@ const Create = ({ questions, actions }) => {
     setIsModalOpen(false);
   };
 
-  const questionList = () =>
-    questions.map((question, idx) => <Question idx={idx} key={question.id} question={question} />);
+  const onDragEnd = (result) => {
+    // dropped outside the list(리스트 밖으로 드랍한 경우)
+    if(!result.destination) {
+      return;
+    }
 
+    actions.reorderQuestion(result.source.index, result.destination.index)
+  }
+
+  const questionList = () => {
+    return questions.map((question, idx) => 
+    <Draggable key={question.id} draggableId={question.id} index={idx}>
+      {(provided, snapshot) => (
+        <div>
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            <Question idx={idx} key={question.id} question={question} />
+          </div>
+          {provided.placeholder}
+        </div>
+      )}
+    </Draggable>);
+  }
 
   return (
     <div className="create">
@@ -25,7 +50,15 @@ const Create = ({ questions, actions }) => {
       <div className="pad" />
 
       <main className="container">
-        {questionList()}
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="droppable">
+            {(provided, snapshot) => (
+              <div ref={provided.innerRef}>
+                {questionList()}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>  
         <div className="add-button">
           <button onClick={() => actions.addQuestion()} type="button" className="btn btn-outline-primary rounded-pill">
             + 문제 추가
