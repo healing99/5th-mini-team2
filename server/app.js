@@ -3,6 +3,8 @@ const express = require('express');
 const logger = require('morgan');
 const moment = require('moment');
 const dotenv = require('dotenv');
+const cors = require('cors');
+
 const path = require('path');
 dotenv.config()
 const http = require('http');
@@ -22,6 +24,7 @@ logger.token('date', function () {
 });
 app.use(logger('[:date] [:remote-addr] [:method HTTP/:http-version] [:status] [:res[content-length]] [:url] [:user-agent]'));
 app.use(express.json());
+app.use(cors())
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, './public')));
 
