@@ -11,10 +11,10 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Main} />
-        <Route path="/create" exact component={Create} />
-        <Route path="/solve" exact component={Solve} />
-        <Route path="/login" exact component={Login} />
-        <Route path="/welcome" exact component={Welcome} />
+        <Route path="/create" component={Create} />
+        <Route path="/login" component={Login} />
+        <Route path="/welcome" component={Welcome} />
+        <Route path="/solve/:id" component={Solve} />
       </Switch>
 
       <style jsx global>{`

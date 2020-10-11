@@ -1,23 +1,41 @@
 import * as ActionTypes from '@/data/rootActionTypes';
 import { combineReducers } from 'redux';
-import { QUESTION_TYPES } from '@/const';
 import update from 'immutability-helper';
 
 const initExamState = {
-  classTitle: '기본 이름',
-  testName: '기본 시험지',
-  testTime: '시험 시간',
+  classTitle: '',
+  testName: '',
+  testTime: '',
+  current: 0,
+  last: 0,
 };
 
-const info = (state = initExamState) => state;
+const info = (state = initExamState, action = {}) => {
+  switch (action.type) {
+    case ActionTypes.GET_EXAM:
+      return {
+        ...action.info,
+        current: 0,
+        last: action.questions.length,
+      };
 
-const initQuestionState = [
-  { img: null, type: QUESTION_TYPES.MULTIPLE_CHOICE, answer: [0, 1], numChoices: 5 },
-  { img: null, type: QUESTION_TYPES.MULTIPLE_CHOICE, answer: [3], numChoices: 4 },
-  { img: null, type: QUESTION_TYPES.SHORT_ANSWER, answer: [] },
-];
+    case ActionTypes.NEXT_QUESTION:
+      return {
+        ...state,
+        current: state.current + 1 >= state.last ? state.current : state.current + 1,
+      };
 
-const questions = (state = initQuestionState, action = {}) => {
+    case ActionTypes.PREV_QUESTION:
+      return {
+        ...state,
+        current: state.current - 1 >= 0 ? state.current - 1 : 0,
+      };
+    default:
+      return state;
+  }
+};
+
+const questions = (state = [], action = {}) => {
   switch (action.type) {
     case ActionTypes.MARK_ANSWER:
       if (action.value) {
@@ -36,6 +54,10 @@ const questions = (state = initQuestionState, action = {}) => {
           answer: question.answer.filter((item) => item !== action.answerIdx),
         };
       });
+
+    case ActionTypes.GET_EXAM:
+      return action.questions;
+
     default:
       return state;
   }

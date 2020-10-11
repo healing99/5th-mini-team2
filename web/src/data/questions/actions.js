@@ -36,7 +36,6 @@ export const createExam = (info, questions) => async (dispatch) => {
     const images = await Services.uploadImages(questions);
 
     const questionsWithImg = Services.setQuestionsWithImage(questions, images);
-    console.log(questionsWithImg);
     await Services.addQuestionsToExam(examPK, questionsWithImg);
 
     dispatch({ type: ActionTypes.CREATE_EXAM });
