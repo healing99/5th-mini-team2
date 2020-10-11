@@ -1,7 +1,8 @@
 import React from 'react';
+import connectStore from '@/hoc/connectStore';
 
-const QuestionModal = ({ isModalOpen, closeModal }) => {
-  if (!isModalOpen) return null;
+const QuestionModal = ({ modals: { question } }) => {
+  if (!question.open) return null;
   return (
     <div className="modal-overlay">
       <div className="modal-form">
@@ -81,4 +82,4 @@ const QuestionModal = ({ isModalOpen, closeModal }) => {
     </div>
   );
 };
-export default QuestionModal;
+export default connectStore(QuestionModal);
