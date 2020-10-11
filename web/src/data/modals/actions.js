@@ -5,14 +5,14 @@ export const showQuestionModal = (url) => ({
   url,
 });
 
-export const hideQuestionModal = () => ({
-  type: ActionTypes.HIDE_QUESTION_MODAL,
+export const closeQuestionModal = () => ({
+  type: ActionTypes.CLOSE_QUESTION_MODAL,
 });
 
 export const showOMRModal = () => ({
   type: ActionTypes.SHOW_OMR_MODAL,
 });
 
-export const hideOMOModal = () => ({
-  type: ActionTypes.HIDE_OMR_MODAL,
+export const closeOMOModal = () => ({
+  type: ActionTypes.CLOSE_OMR_MODAL,
 });
