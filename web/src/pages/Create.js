@@ -1,26 +1,52 @@
 import React, { useState } from 'react';
 import CreateExamForm from '@/components/CreateExamForm';
 import Question from '@/components/Question';
-import Modal from '@/components/Modal';
+import QuestionModal from '@/components/QuestionModal';
 import connectStore from '@/hoc/connectStore';
 
 const Create = ({ questions, actions }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const [modalOpen, setModal] = useState(false);
+  const [info, setInfo] = useState({
+    className: '',
+    examName: '',
+    limitTime: '',
+  });
 
   const questionList = () =>
     questions.map((question, idx) => <Question idx={idx} key={question.id} question={question} />);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { className, examName, limitTime } = info;
+    if (!className || !examName || !limitTime) {
+      alert('시험지 정보를 입력해주세요.');
+      return;
+    }
+
+    let flagQuestion = false;
+    Object.entries(questions).forEach(([_, question]) => {
+      const { image, answer } = question;
+      if (!image || !answer.length) flagQuestion = true;
+    });
+    if (flagQuestion) {
+      alert('잘못된 질문 형식입니다.');
+      return;
+    }
+
+    actions.createExam(info, questions);
+  };
+
+  const handleInfo = (id, value) => {
+    setInfo({
+      ...info,
+      [id]: value,
+    });
+  };
+
   return (
     <div className="create">
-      <CreateExamForm openModal={openModal} />
+      <CreateExamForm handleChange={handleInfo} info={info} handleSubmit={handleSubmit} />
       <div className="pad" />
 
       <main className="container">
@@ -32,7 +58,7 @@ const Create = ({ questions, actions }) => {
         </div>
       </main>
 
-      <Modal isModalOpen={isModalOpen} closeModal={closeModal} />
+      <QuestionModal isModalOpen={modalOpen} closeModal={() => setIsModalOpen(false)} />
 
       <style jsx global>{`
         .create {

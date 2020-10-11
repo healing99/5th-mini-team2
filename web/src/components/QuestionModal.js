@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ isModalOpen, closeModal }) => {
+const QuestionModal = ({ isModalOpen, closeModal }) => {
   if (!isModalOpen) return null;
   return (
     <div className="modal-overlay">
@@ -81,4 +81,4 @@ const Modal = ({ isModalOpen, closeModal }) => {
     </div>
   );
 };
-export default Modal;
+export default QuestionModal;
