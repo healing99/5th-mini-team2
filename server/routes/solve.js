@@ -9,7 +9,7 @@ router.get('/:examPK', async (req, res, next) => {
     if (is.empty(examPK)) throw new Error('시험 코드가 없습니다.');
     res.status(200).json(await solveMd.solve(examPK));
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 

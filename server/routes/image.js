@@ -34,9 +34,9 @@ const upload = multer({ storage: storage });
 
 router.post('/upload', upload.single('image'), async (req, res, next) => {
   try {
-    res.status(200).json({ 'status': 'success', 'msg': '이미지 업로드에 성공했습니다!', 'code': req.file.filename });
+    res.status(201).json({ 'status': 'success', 'msg': '이미지 업로드에 성공했습니다!', 'code': req.file.filename });
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 

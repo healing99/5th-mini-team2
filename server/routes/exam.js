@@ -9,10 +9,9 @@ router.post('/create', async (req, res, next) => {
   const regUserPK = '';  // 현재 Token 시스템 미 구현으로, 실 서비스 전까지 등록자 PK는 NULL 유지
   try {
     if (is.empty(examName) || is.empty(startTime) || is.empty(limitTime)) throw new Error('필수 파라미터가 없습니다.');
-    res.status(200).json(await examMd.create(subjectPK, examName, startTime, limitTime, regUserPK));
-
+    res.status(201).json(await examMd.create(subjectPK, examName, startTime, limitTime, regUserPK));
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 
@@ -21,7 +20,7 @@ router.get('/list/:LIMIT', async (req, res, next) => {
   try {
     res.status(200).json(await examMd.list(LIMIT));
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 

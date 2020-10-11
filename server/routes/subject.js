@@ -7,10 +7,10 @@ router.post('/create', async (req, res, next) => {
   const { subjectName } = req.body;
   try {
     if (is.empty(subjectName)) throw new Error('필수 파라미터가 없습니다.');
-    res.status(200).json(await subjectMd.subjectCreate(subjectName));
+    res.status(201).json(await subjectMd.subjectCreate(subjectName));
 
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 
@@ -18,7 +18,7 @@ router.get('/list', async (req, res, next) => {
   try {
     res.status(200).json(await subjectMd.subjectList());
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 

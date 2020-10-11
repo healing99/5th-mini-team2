@@ -8,9 +8,9 @@ router.post('/register/:Gr', async (req, res, next) => {
   const { userId, userPw } = req.body;  //유저 그룹, 유저 ID, 유저 PW
   try {
     if (is.empty(userId) || is.empty(userPw)) throw new Error('필수 파라미터가 없습니다.');
-    res.status(200).json(await authMd.register(userId, userPw, Gr));
+    res.status(201).json(await authMd.register(userId, userPw, Gr));
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 
@@ -20,7 +20,7 @@ router.post('/check', async (req, res, next) => {
     if (is.empty(userId) || is.empty(userPw)) throw new Error('필수 파라미터가 없습니다.');
     res.status(200).json(await authMd.check(userId, userPw));
   } catch (err) {
-    res.status(404).json({ 'status': 'error', 'msg': err.message });
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 
