@@ -13,7 +13,7 @@ router.post('/register/:Gr', async (req, res, next) => {
     res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
-
+/*  현재 미니 프로젝트 단계에서는 아이디 비밀번호 로그인 X, 향후 활용 가능성 있어 남겨둠
 router.post('/check', async (req, res, next) => {
   const { userId, userPw } = req.body;  // 유저 ID, 유저 PW
   try {
@@ -21,6 +21,9 @@ router.post('/check', async (req, res, next) => {
     res.status(200).json(await authMd.check(userId, userPw));
   } catch (err) {
     res.status(400).json({ 'status': 'error', 'msg': err.message });
+  }
+});
+*/
   }
 });
 
