@@ -5,7 +5,6 @@ import QuestionModal from '@/components/QuestionModal';
 import connectStore from '@/hoc/connectStore';
 
 const Create = ({ questions, actions }) => {
-  const [modalOpen, setModal] = useState(false);
   const [info, setInfo] = useState({
     className: '',
     examName: '',
@@ -58,7 +57,7 @@ const Create = ({ questions, actions }) => {
         </div>
       </main>
 
-      <QuestionModal isModalOpen={modalOpen} closeModal={() => setIsModalOpen(false)} />
+      <QuestionModal />
 
       <style jsx global>{`
         .create {

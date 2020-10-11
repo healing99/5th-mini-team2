@@ -1,7 +1,8 @@
 import * as ActionTypes from '@/data/rootActionTypes';
 
-export const showQuestionModal = () => ({
+export const showQuestionModal = (url) => ({
   type: ActionTypes.SHOW_QUESTION_MODAL,
+  url,
 });
 
 export const hideQuestionModal = () => ({

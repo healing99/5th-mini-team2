@@ -1,17 +1,17 @@
 import * as ActionTypes from '@/data/rootActionTypes';
 import { combineReducers } from 'redux';
 
-const question = (state = { show: false, link: '' }, action = {}) => {
+const question = (state = { show: false, url: '' }, action = {}) => {
   switch (action.type) {
     case ActionTypes.SHOW_QUESTION_MODAL:
       return {
         open: true,
-        link: action.data,
+        url: action.url,
       };
     case ActionTypes.HIDE_QUESTION_MODAL:
       return {
         open: false,
-        link: '',
+        url: '',
       };
     default:
       return state;

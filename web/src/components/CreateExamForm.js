@@ -1,70 +1,42 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
 import { REG_EXP } from '@/const';
 import classNames from 'classnames';
 
-const CreateExamForm = ({ openModal }) => {
-  const submitButton = useRef();
-  const [inputs, setInputs] = useState({
-    lecture: '',
-    subject: '',
-    time: '',
-  });
-
-  //수업명과 과목명 입력받기
-  const { lecture, subject, time } = inputs;
-  const handleValueChange = (e) => {
-    const { value, name } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
-
-  //버튼 누르면 값을 콘솔창에서 확인할 수 있도록
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (lecture === '' || subject === '' || time === '') {
-      alert('내용을 입력하세요');
-    } else {
-      console.log(`${lecture} ${subject} ${time}`);
-      resetInputs();
-    }
-
-    submitButton.current.blur();
-  };
-
-  //버튼 누른 후 입력창 초기화 되도록
-  const resetInputs = () => {
-    setInputs({
-      lecture: '',
-      subject: '',
-      time: '',
-    });
-  };
-
+const CreateExamForm = ({ handleSubmit, info, handleChange }) => {
   return (
     <nav className="exam-form">
       <div className={classNames('container', 'navbar')}>
         <form onSubmit={handleSubmit} className="row">
           <div className="col-3">
-            <TextField onChange={handleValueChange} value={inputs.lecture} name="lecture" label="클래스명 입력" />
+            <TextField
+              onChange={({ target: { value } }) => handleChange('className', value)}
+              value={info.className}
+              name="lecture"
+              label="클래스명 입력"
+            />
           </div>
           <div className="col-4">
-            <TextField onChange={handleValueChange} value={inputs.subject} name="subject" label="제목 입력" />
+            <TextField
+              onChange={({ target: { value } }) => handleChange('examName', value)}
+              value={info.examName}
+              name="subject"
+              label="제목 입력"
+            />
           </div>
           <div className="col-3">
             <TextField
               pattern={REG_EXP.NUMBER}
-              onChange={handleValueChange}
-              value={inputs.time}
+              onChange={({ target: { value } }) => handleChange('limitTime', value)}
+              value={info.limitTime}
               name="time"
               label="시간 입력"
             />
           </div>
           <div className={classNames('col', 'btn-wrapper')}>
-            <Button ref={submitButton} type="submit" color="primary" onClick={openModal}>
+            <Button type="submit" color="primary" onClick={handleSubmit}>
               링크 생성
             </Button>
           </div>
@@ -97,4 +69,9 @@ const CreateExamForm = ({ openModal }) => {
   );
 };
 
+CreateExamForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  info: PropTypes.object,
+  handleChange: PropTypes.func,
+};
 export default CreateExamForm;
