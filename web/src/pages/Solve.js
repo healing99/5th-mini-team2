@@ -5,6 +5,7 @@ import ExamImage from '@/components/ExamImage';
 import OMR from '@/components/OMR';
 import connectStore from '@/hoc/connectStore';
 import OMRModal from '@/components/OMRModal';
+import { useHistory } from 'react-router-dom';
 
 const Solve = ({ exam: { info, questions }, match, actions }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,6 +22,17 @@ const Solve = ({ exam: { info, questions }, match, actions }) => {
     const { id } = match.params;
     actions.getExam(id);
   }, []);
+
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    const message = confirm('제출하시겠습니까?');
+    if (message) {
+      history.push('/welcome');
+    } else {
+      e.preventDefault();
+    }
+  };
 
   return (
     <div className="solve">
@@ -52,7 +64,11 @@ const Solve = ({ exam: { info, questions }, match, actions }) => {
             </button>
           </div>
           <div style={{ margin: 0, paddingLeft: 0 }} className="col">
-            <button style={{ margin: 0 }} type="button" className="btn btn-primary rounded-pill btn-block">
+            <button
+              style={{ margin: 0 }}
+              type="button"
+              className="btn btn-primary rounded-pill btn-block"
+              onClick={handleSubmit}>
               답안지 전송
             </button>
           </div>
