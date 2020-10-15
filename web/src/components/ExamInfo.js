@@ -6,16 +6,19 @@ import { useHistory } from 'react-router-dom';
 const ExamInfo = ({ info }) => {
   const { classTitle, testName, testTime } = info;
 
-  let startingMinutes = 30; //testTime으로 초기화하기
-  let totalTime = startingMinutes * 60;
+  let totalTime = testTime * 60;
   const [time, setTime] = useState(totalTime);
-  const [minutes, setMinutes] = useState(startingMinutes);
-  const [seconds, setSeconds] = useState(0);
+  const [timeString, setTimeString] = useState('');
+
+  const timeFormat = (time) => {
+    var minutes = Math.floor(time / 60).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+    var seconds = (time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+    setTimeString(minutes + ' : ' + seconds);
+  };
 
   const updateTime = () => {
-    setMinutes(Math.floor(time / 60));
-    setSeconds(time % 60);
     setTime((time) => time - 1);
+    return timeFormat(time);
   };
 
   useEffect(() => {
@@ -23,7 +26,7 @@ const ExamInfo = ({ info }) => {
       submitExam();
       return;
     }
-    var timer = setInterval(updateTime, 1000);
+    const timer = setInterval(updateTime, 1000);
     return () => clearInterval(timer);
   }, [time]);
 
@@ -47,9 +50,7 @@ const ExamInfo = ({ info }) => {
           </div>
           <div className="col-3 item">
             <span className="rounded-box">시험 시간</span>
-            <span className="text">
-              {minutes} : {seconds}
-            </span>
+            <span className="text">{timeString}</span>
           </div>
         </div>
       </div>
