@@ -2,7 +2,6 @@
 dist/*
 !dist/_redirects
 node_modules
-server/
 .vscode
 .DS_store
 .idea/
