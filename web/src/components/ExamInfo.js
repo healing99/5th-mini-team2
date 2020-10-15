@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useHistory } from 'react-router-dom';
 
-const ExamInfo = ({info}) => {
+const ExamInfo = ({ info }) => {
   const { classTitle, testName, testTime } = info;
-  
+
+  let totalTime = testTime * 60;
+  const [time, setTime] = useState(totalTime);
+  const [timeString, setTimeString] = useState('');
+
+  const timeFormat = (time) => {
+    var minutes = Math.floor(time / 60).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+    var seconds = (time % 60).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+    setTimeString(minutes + ' : ' + seconds);
+  };
+
+  const updateTime = () => {
+    setTime((time) => time - 1);
+    return timeFormat(time);
+  };
+
+  useEffect(() => {
+    if (time == -1) {
+      submitExam();
+      return;
+    }
+    const timer = setInterval(updateTime, 1000);
+    return () => clearInterval(timer);
+  }, [time]);
+
+  const history = useHistory();
+  const submitExam = () => {
+    alert('시험이 종료되었습니다');
+    history.push('/welcome');
+  };
+
   return (
     <nav className="exam-info">
       <div className={classNames('container', 'navbar')}>
@@ -19,7 +50,7 @@ const ExamInfo = ({info}) => {
           </div>
           <div className="col-3 item">
             <span className="rounded-box">시험 시간</span>
-            <span className="text">{testTime}</span>
+            <span className="text">{timeString}</span>
           </div>
         </div>
       </div>
