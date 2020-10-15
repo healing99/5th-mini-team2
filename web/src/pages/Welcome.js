@@ -15,16 +15,16 @@ const Welcome = () => {
             <div className="title">홍길동 학생, 어서오세요!</div>
           </div>
           <div className="row">
-            <div className="test-info">CLASS</div>
-            <div>둘리반 심화</div>
+            <div className="test-content">CLASS</div>
+            <div className="test-info">둘리반 심화</div>
           </div>
           <div className="row">
-            <div className="test-info">시험명</div>
-            <div>국어 {'>'} 문법 심화</div>
+            <div className="test-content">시험명</div>
+            <div className="test-info">국어 {'>'} 문법 심화</div>
           </div>
           <div className="row">
-            <div className="test-info">시험시간</div>
-            <div>60분</div>
+            <div className="test-content">시험시간</div>
+            <div className="test-info">60분</div>
           </div>
           <div className="row">
             <Button
@@ -64,24 +64,31 @@ const Welcome = () => {
           .row:nth-child(1) {
             justify-content: center;
           }
-          .row:nth-child(3) {
-            line-height: 1.46;
-            letter-spacing: -1.3px;
-            color: #ffffff;
-            white-space: pre;
+          .test-content {
+            display: flex;
+            width: 43%;
+            justify-content: center;
+            padding-top: 10px;
+            background-color: #c2dae5;
           }
           .test-info {
-            display: flex;
-            width: 45%;
             justify-content: center;
+            padding-top: 10px;
+            padding-left: 15px;
           }
           .row:nth-child(2n) {
-            background-color: #cee1e9;
+            background-color: #9ec6db;
             height: 43px;
-            padding-top: 8px;
-            margin-top: 8px;
-            margin-bottom: 10px;
-            color: #707070;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            color: #585858;
+          }
+          .row:nth-child(3) {
+            background-color: #9ec6db;
+            height: 43px;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            color: #585858;
           }
           .row:nth-child(5) {
             margin-top: 50px;
