@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import { toTimeFormat } from '@/utils/format';
 
@@ -89,8 +89,8 @@ const ExamInfo = ({ info: { classTitle, testName, testTime }, readOnly = false }
 };
 
 ExamInfo.propTypes = {
-  classTitle: PropTypes.string,
-  testName: PropTypes.string,
-  testTime: PropTypes.string,
+  info: PropTypes.object,
+  readOnly: PropTypes.bool,
+  onSubmit: PropTypes.func,
 };
 export default ExamInfo;
