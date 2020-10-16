@@ -72,12 +72,16 @@ const Question = ({ idx, question, provided, actions }) => {
           font-size: 18px;
           border: solid 1px #707070;
           border-bottom: none;
-          padding: 8px 16px;
+          padding: 0px 16px;
           position: relative;
+          height: 50px;
+        }
+        .question .title span {
+          margin: auto 0px;
         }
         .question .attach {
           width: 100%;
-          height: 400px;
+          height: 350px;
           background-color: #f2f2f2;
           display: flex;
           align-items: center;
@@ -86,6 +90,9 @@ const Question = ({ idx, question, provided, actions }) => {
           color: #707070;
           text-align: center;
           cursor: pointer;
+        }
+        .question .attach .add {
+          font-size: 36px;
         }
         .question .attach .delete {
           position: absolute;
@@ -98,6 +105,7 @@ const Question = ({ idx, question, provided, actions }) => {
           height: 100%;
           object-fit: contain;
         }
+
       `}</style>
     </div>
   );
