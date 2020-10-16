@@ -1,17 +1,26 @@
-import React, { useEffect, useState  } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { toTimeFormat } from '@/utils/format';
 
 const ExamInfo = ({ info: { classTitle, testName, testTime } }) => {
+  const history = useHistory();
   const [remaining, setRemaining] = useState(testTime * 60);
 
   useEffect(() => {
-    const runTimer = () => setRemaining(prev => prev - 1);
+    const runTimer = () => {
+      if (remaining < 0) {
+        history.push('/');
+        return;
+      }
+      setRemaining(prev => prev - 1);
+    }
     const timer = setInterval(runTimer, 1000);
 
     return () => clearInterval(timer);
-  })
+  }, []);
+
   return (
     <nav className="exam-info">
       <div className={classNames('container', 'navbar')}>
