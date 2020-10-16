@@ -33,7 +33,7 @@ const Question = ({ idx, question, provided, actions }) => {
       <QuestionType idx={idx} type={question.type} />
 
       <div className="row">
-        <div className="col-8">
+        <div className="col-8 image-root">
           <div className="h-100 d-flex flex-column">
             <div className="title px-3 d-flex">
               <div className="question-number">문제 {idx + 1}</div>
@@ -41,10 +41,10 @@ const Question = ({ idx, question, provided, actions }) => {
                 <img src={DragDropButton} />
               </div>
             </div>
-            <div onClick={() => fileRef.current.click()} className="question-image flex-grow-1">
-            {imgAttachment()}
-            <input accept="image/*" hidden={true} onChange={handleFile} ref={fileRef} type="file" />
-            <img className="delete" src={DeleteIcon} onClick={() => actions.removeQuestion(idx)} />
+            <div onClick={() => fileRef.current.click()} className="attach">
+              {imgAttachment()}
+              <input accept="image/*" hidden={true} onChange={handleFile} ref={fileRef} type="file" />
+              <img className="delete" src={DeleteIcon} onClick={() => actions.removeQuestion(idx)} />
             </div>
           </div>
         </div>
@@ -58,11 +58,13 @@ const Question = ({ idx, question, provided, actions }) => {
           width: 100%;
           padding-bottom: 5%;
         }
+        .image-root {
+          height: 400px;
+        }
         .question-number {
           flex-basis: 48.5%;
         }
         .question .title {
-          margin-top: 20px;
           font-weight: 600;
           color: #707070;
           font-size: 18px;
