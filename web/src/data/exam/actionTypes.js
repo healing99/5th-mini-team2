@@ -5,3 +5,5 @@ export const GET_EXAM = 'GET_EXAM';
 export const SET_SOLVE_STEP = 'SET_SOLVE_STEP';
 export const DECREASE_REMAINING = 'DECREASE_REMAINING';
 export const INCREASE_REMAINING = 'INCREASE_REMAINING';
+export const SET_GRADED = 'SET_GRADED';
+export const INIT_GRADED = 'INIT_GRADED';

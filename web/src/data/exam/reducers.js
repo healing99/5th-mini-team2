@@ -38,13 +38,13 @@ const info = (state = initExamState, action = {}) => {
       return {
         ...state,
         remain: state.remain + 1,
-      }
+      };
 
     case ActionTypes.DECREASE_REMAINING:
       return {
         ...state,
         remain: state.remain - 1,
-      }
+      };
 
     default:
       return state;
@@ -88,8 +88,21 @@ const step = (state = EXAM.LOGIN_STEP, action = {}) => {
   }
 };
 
+const initGraded = { corrects: 0, incorrects: 0, gradedQuestions: [] };
+const graded = (state = initGraded, action = {}) => {
+  switch (action.type) {
+    case ActionTypes.SET_GRADED:
+      return action.gradedResult;
+    case ActionTypes.INIT_GRADED:
+      return initGraded;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   info,
   questions,
   step,
+  graded,
 });

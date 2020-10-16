@@ -39,7 +39,11 @@ const SolveExam = ({ exam: { info, questions }, actions }) => {
             </button>
           </div>
           <div style={{ margin: 0, paddingLeft: 0 }} className="col">
-            <button style={{ margin: 0 }} type="button" className="btn btn-primary rounded-pill btn-block">
+            <button
+              onClick={() => actions.submitExam(questions, info)}
+              style={{ margin: 0 }}
+              type="button"
+              className="btn btn-primary rounded-pill btn-block">
               답안지 전송
             </button>
           </div>

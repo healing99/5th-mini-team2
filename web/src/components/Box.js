@@ -14,7 +14,7 @@ function Box({ items = ['test', 'test'] }) {
       {items.map((item, _) => createItem(item, _ === items.length - 1, _))}
       <style jsx global>{`
         .box {
-          padding: 8px 16px;
+          padding: 12px 16px;
           background-color: #d2ebf9;
           font-size: 14px;
           display: inline;

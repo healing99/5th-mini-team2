@@ -8,8 +8,36 @@ export const fetchExam = async (id) => {
 
 export const parseQuestions = (questions) =>
   questions.map((question) => ({
-    correct: JSON.parse(question.answer), 
+    correct: JSON.parse(question.answer),
     answer: [],
     img: `${URLS.BASE_URL}/img/${question.img}`,
     type: Number(question.type),
   }));
+
+export const gradeExam = (questions) => {
+  let corrects = 0;
+
+  const gradedQuestions = questions.map((question) => {
+    const { correct, answer } = question;
+    correct.sort();
+    answer.sort();
+
+    let wrongFlag = false;
+    correct.forEach((correctAnswer, idx) => {
+      if (correctAnswer !== answer[idx]) wrongFlag = true;
+    });
+
+    if (!wrongFlag) corrects++;
+    return {
+      isCorrected: !wrongFlag,
+      correct,
+      answer,
+    };
+  });
+
+  return {
+    corrects,
+    incorrects: questions.length - corrects,
+    gradedQuestions, 
+  };
+};

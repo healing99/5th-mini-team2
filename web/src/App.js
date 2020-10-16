@@ -1,14 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import Main from '@/pages/Main';
 import Create from '@/pages/Create';
 import Solve from '@/pages/Solve';
 import Result from '@/pages/Result';
 import NotFound from '@/pages/NotFound';
+import history from '@/utils/history';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/create" component={Create} />
@@ -23,7 +24,7 @@ const App = () => {
           font-family: 'Noto-Sans-KR', sans-serif;
         }
       `}</style>
-    </BrowserRouter>
+    </Router>
   );
 };
 
