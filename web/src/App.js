@@ -6,8 +6,10 @@ import Solve from '@/pages/Solve';
 import Result from '@/pages/Result';
 import NotFound from '@/pages/NotFound';
 import history from '@/utils/history';
+import connectStore from '@/hoc/connectStore';
+import Loading from '@/components/Loading';
 
-const App = () => {
+const App = ({ loading }) => {
   return (
     <Router history={history}>
       <Switch>
@@ -18,6 +20,7 @@ const App = () => {
         <Route path="*" component={NotFound} />
       </Switch>
 
+      <Loading show={loading} />
       <style jsx global>{`
         body {
           padding: 0;
@@ -28,4 +31,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default connectStore(App);

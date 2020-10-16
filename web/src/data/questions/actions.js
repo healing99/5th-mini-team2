@@ -38,6 +38,8 @@ export const addImage = (file, idx) => ({
 
 export const createExam = (info, questions) => async (dispatch) => {
   try {
+    dispatch({ type: ActionTypes.SHOW_LOADING });
+
     const { examPK } = await Services.addExam(info);
 
     const images = await Services.uploadImages(questions);
@@ -49,5 +51,7 @@ export const createExam = (info, questions) => async (dispatch) => {
     dispatch({ type: ActionTypes.SHOW_QUESTION_MODAL, url: `${origin}/solve/${examPK}` });
   } catch (err) {
     console.log(err);
+  } finally {
+    dispatch({ type: ActionTypes.HIDE_LOADING });
   }
 };

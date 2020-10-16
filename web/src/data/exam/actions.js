@@ -24,6 +24,8 @@ export const setSolveStep = (step) => ({
 
 export const getExam = (id) => async (dispatch) => {
   try {
+    dispatch({ type: ActionTypes.SHOW_LOADING });
+
     const exam = await Services.fetchExam(id);
     const { questions, ...info } = exam;
 
@@ -33,6 +35,8 @@ export const getExam = (id) => async (dispatch) => {
     dispatch({ type: ActionTypes.GET_EXAM, info, questions: parsedQuestions });
   } catch (err) {
     console.log(err);
+  } finally {
+    dispatch({ type: ActionTypes.HIDE_LOADING });
   }
 };
 
