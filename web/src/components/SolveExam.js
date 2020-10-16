@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import ExamInfo from '@/components/ExamInfo';
-import ExamRemaining from '@/components/ExamRemaining';
+import Box from '@/components/Box';
 import ExamImage from '@/components/ExamImage';
 import OMR from '@/components/OMR';
-import connectStore from '@/hoc/connectStore';
 import OMRModal from '@/components/OMRModal';
+import connectStore from '@/hoc/connectStore';
 
 const SolveExam = ({ exam: { info, questions }, actions }) => {
   const [omrModal, setOmrModal] = useState(false);
@@ -15,7 +15,7 @@ const SolveExam = ({ exam: { info, questions }, actions }) => {
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
-            <ExamRemaining current={info.current + 1} remain={info.remain} />
+            <Box items={[`현재 ${info.current + 1}문제`, `남은 ${info.remain}문제`]} />
           </div>
         </div>
         <div className="row question-input">
