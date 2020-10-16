@@ -3,6 +3,11 @@ import connectStore from '@/hoc/connectStore';
 
 const QuestionModal = ({ modals: { question }, actions }) => {
   if (!question.open) return null;
+  const onCopy = () => {
+    document.execCommand('copy');
+    actions.closeQuestionModal();
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal-form">
@@ -10,9 +15,8 @@ const QuestionModal = ({ modals: { question }, actions }) => {
         <div className="modal-form-content">
           <div className="modal-form-content__link">
             <input type="text" readOnly value={question.url} className="modal-form-content__link-input" />
-            <button className="modal-form-content__link-btn">X</button>
           </div>
-          <button className="modal-form-content__copybtn" onClick={() => actions.closeQuestionModal()}>
+          <button className="modal-form-content__copybtn" onClick={onCopy}>
             복사
           </button>
         </div>
