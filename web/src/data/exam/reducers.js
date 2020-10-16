@@ -99,6 +99,8 @@ const step = (state = EXAM.LOGIN_STEP, action = {}) => {
   switch (action.type) {
     case ActionTypes.SET_SOLVE_STEP:
       return action.step;
+    case ActionTypes.END_EXAM:
+      return EXAM.LOGIN_STEP;
     default:
       return state;
   }
