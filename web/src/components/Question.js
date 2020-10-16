@@ -4,8 +4,10 @@ import AnswerInput from './AnswerInput';
 import QuestionType from './QuestionType';
 import DeleteIcon from '@/assets/images/delete.png';
 import connectStore from '@/hoc/connectStore';
+import DragDropButton from '@/assets/images/DragDropButton.png';
 
-const Question = ({ idx, question, actions }) => {
+
+const Question = ({ idx, question, provided, actions }) => {
   const fileRef = useRef(null);
 
   const handleFile = ({ target: { files } }) => {
@@ -29,13 +31,21 @@ const Question = ({ idx, question, actions }) => {
   return (
     <div className="question">
       <QuestionType idx={idx} type={question.type} />
-      <p className="title">문제 {idx + 1}</p>
+
       <div className="row">
         <div className="col-8">
-          <div onClick={() => fileRef.current.click()} className="attach">
+          <div className="h-100 d-flex flex-column">
+            <div className="title px-3 d-flex">
+              <div className="question-number">문제 {idx + 1}</div>
+              <div {...provided.dragHandleProps}>
+                <img src={DragDropButton} />
+              </div>
+            </div>
+            <div onClick={() => fileRef.current.click()} className="question-image flex-grow-1">
             {imgAttachment()}
             <input accept="image/*" hidden={true} onChange={handleFile} ref={fileRef} type="file" />
             <img className="delete" src={DeleteIcon} onClick={() => actions.removeQuestion(idx)} />
+            </div>
           </div>
         </div>
         <div className="col-4">
@@ -48,11 +58,16 @@ const Question = ({ idx, question, actions }) => {
           width: 100%;
           padding-bottom: 5%;
         }
+        .question-number {
+          flex-basis: 48.5%;
+        }
         .question .title {
           margin-top: 20px;
           font-weight: 600;
           color: #707070;
           font-size: 18px;
+          border: solid 1px #707070;
+          border-bottom: none;
         }
         .question .attach {
           width: 100%;

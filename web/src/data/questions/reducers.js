@@ -51,6 +51,13 @@ const questions = (state = initState, action = {}) => {
     case ActionTypes.REMOVE_QUESTION:
       return update(state, { $splice: [[action.idx, 1]] });
 
+    case ActionTypes.REORDER_QUESTION:  // 순서바꾸기 
+      const result = Array.from(state);
+      const [removed] = result.splice(action.firstIdx, 1);
+      result.splice(action.secondIdx, 0, removed);
+
+      return update(state, { $set: result });
+
     case ActionTypes.ADD_IMAGE_QUESTION:
       return update(state, {
         [action.idx]: {
