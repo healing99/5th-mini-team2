@@ -6,7 +6,7 @@ import iconTest from '@/assets/images/iconTest.png';
 import iconAcademy from '@/assets/images/iconAcademy.png';
 import banner from '@/assets/images/banner.png';
 
-const Main = () => {
+const Main = ({ history }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleValueChange = (e) => {
@@ -72,6 +72,7 @@ const Main = () => {
               <img className="icon" src={iconTest}></img>
             </div>
             <Button
+              onClick={() => history.push('/create')}
               color="light"
               style={{
                 marginTop: '20px',
