@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import ExamInfo from '@/components/ExamInfo';
 import ResultScore from '@/components/ResultScore';
 import ResultTable from '@/components/ResultTable';
@@ -8,6 +9,7 @@ import connectStore from '@/hoc/connectStore';
 const Result = ({ exam: { info, graded }, student }) => {
   const getScore = () => Math.floor((graded.corrects / (graded.corrects + graded.incorrects)) * 100);
 
+  if (graded.questions.length === 0) return <Redirect to="/" />;
   return (
     <>
       <ExamInfo info={info} readOnly />
