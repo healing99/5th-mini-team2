@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState  } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { toTimeFormat } from '@/utils/format';
 
-const ExamInfo = ({ info }) => {
-  const { classTitle, testName, testTime } = info;
+const ExamInfo = ({ info: { classTitle, testName, testTime } }) => {
+  const [remaining, setRemaining] = useState(testTime * 60);
 
+  useEffect(() => {
+    const runTimer = () => setRemaining(prev => prev - 1);
+    const timer = setInterval(runTimer, 1000);
+
+    return () => clearInterval(timer);
+  })
   return (
     <nav className="exam-info">
       <div className={classNames('container', 'navbar')}>
@@ -19,7 +26,7 @@ const ExamInfo = ({ info }) => {
           </div>
           <div className="col-3 item">
             <span className="rounded-box">시험 시간</span>
-            <span className="text">{`${testTime} 분`}</span>
+            <span className="text">{toTimeFormat(remaining)}</span>
           </div>
         </div>
       </div>
