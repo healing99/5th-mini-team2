@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react'
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
 import { REG_EXP } from '@/const';
 import TestyImg from '@/assets/images/testy.png';
 import backgroundImg from '@/assets/images/background.png';
 
-const Login = () => {
+const SolveLogin = () => {
   const loginButton = useRef();
   const [inputs, setInputs] = useState({
     studentName: '',
@@ -107,6 +107,6 @@ const Login = () => {
       </style>
     </div>
   );
-};
+}
 
-export default Login;
+export default SolveLogin

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import Button from '@/components/Button';
 import backgroundImg from '@/assets/images/background.png';
 
-const Welcome = () => {
+const SolveWelcome = () => {
   const handleStartButton = (e) => {
     e.preventDefault();
   };
@@ -102,6 +102,6 @@ const Welcome = () => {
       </style>
     </div>
   );
-};
+}
 
-export default Welcome;
+export default SolveWelcome
