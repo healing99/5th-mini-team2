@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="165" height="126" viewBox="0 0 165 126">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".098" x2="1.116" y1=".06" y2="1.103" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#63c6c6"/>
+            <stop offset=".05" stop-color="#61c4c6" stop-opacity=".965"/>
+            <stop offset=".169" stop-color="#5fc2c6" stop-opacity=".941"/>
+            <stop offset=".307" stop-color="#5abdc6" stop-opacity=".871"/>
+            <stop offset=".455" stop-color="#53b5c6" stop-opacity=".753"/>
+            <stop offset=".61" stop-color="#48aac6" stop-opacity=".584"/>
+            <stop offset=".771" stop-color="#3b9cc6" stop-opacity=".373"/>
+            <stop offset=".933" stop-color="#2b8bc6" stop-opacity=".118"/>
+            <stop offset="1" stop-color="#2484c6" stop-opacity="0"/>
+        </linearGradient>
+        <style>
+            .cls-6{fill:#fff}.cls-3{fill:#63bbc7}
+        </style>
+    </defs>
+    <g id="그룹_94" transform="translate(-852.869 -304)">
+        <path id="패스_72" fill="#e4cd84" d="M868.281 426h28.739s-7.7 27.219-15.082 27.219-16.55-5.842-13.657-27.219z" transform="translate(-3.276 -27.122)"/>
+        <path id="패스_73" d="M858.655 314.891a6.053 6.053 0 1 1 8.56-8.56c2.363 2.363 4.917 13.477 4.917 13.477s-11.113-2.554-13.477-4.917z" class="cls-3" transform="translate(-.863 -.124)"/>
+        <path id="패스_74" d="M865.379 337.1a4.019 4.019 0 0 1-2.523-7.631c2.108-.7 9.462 1.105 9.462 1.105s-4.831 5.826-6.939 6.526z" class="cls-3" transform="translate(-1.578 -5.626)"/>
+        <path id="패스_75" d="M1049.011 336.514a6.446 6.446 0 1 1 6.87 10.909c-3.012 1.9-15.156 1.928-15.156 1.928s5.275-10.939 8.286-12.837z" class="cls-3" transform="translate(-41.734 -7.008)"/>
+        <path id="패스_76" d="M1052.138 359.3a4.7 4.7 0 0 1-4.674 8.149c-2.25-1.291-6.419-9.1-6.419-9.1s8.842-.344 11.093.951z" class="cls-3" transform="translate(-41.805 -12.073)"/>
+        <path id="패스_77" fill="#499cc4" d="M976.286 320h-77.768a7.777 7.777 0 0 0-7.777 7.777v78.491c-.372 6.355-1.729 14.327-5.508 18.388a8 8 0 0 1-6.158 2.665 7.916 7.916 0 0 1-6.14-2.61c-4.941-5.362-5.11-17.713-4.759-22.02a3.11 3.11 0 0 0-6.2-.514c-.061.742-1.424 18.264 6.375 26.741a14.006 14.006 0 0 0 10.723 4.625h86.619c10.145 0 17.591-8.555 18.369-26.441v-79.325a7.777 7.777 0 0 0-7.776-7.777z" transform="translate(-1.967 -3.557)"/>
+        <path id="패스_78" fill="url(#linear-gradient)" d="M976.286 320h-77.768a7.777 7.777 0 0 0-7.777 7.777v78.491c-.372 6.355-1.729 14.327-5.508 18.388a8 8 0 0 1-6.158 2.665 7.916 7.916 0 0 1-6.14-2.61c-4.941-5.362-5.11-17.713-4.759-22.02a3.11 3.11 0 0 0-6.2-.514c-.061.742-1.424 18.264 6.375 26.741a14.006 14.006 0 0 0 10.723 4.625h86.619c10.145 0 17.591-8.555 18.369-26.441v-79.325a7.777 7.777 0 0 0-7.776-7.777z" transform="translate(-1.967 -3.557)"/>
+        <g id="그룹_92" transform="translate(918.326 345.995)">
+            <rect id="사각형_273" width="8" height="12" class="cls-6" rx="4" transform="translate(-.457 .005)"/>
+            <rect id="사각형_274" width="8" height="12" class="cls-6" rx="4" transform="translate(26.543 .005)"/>
+        </g>
+        <g id="그룹_93" transform="translate(924.547 363.882)">
+            <path id="패스_79" d="M965.218 388.777a1.555 1.555 0 0 1-1.507-1.178c-.539-2.154-4.48-3.488-7.823-3.488s-7.285 1.334-7.823 3.488a1.555 1.555 0 1 1-3.017-.754c1-4.015 6.323-5.844 10.841-5.844s9.837 1.829 10.841 5.844a1.556 1.556 0 0 1-1.51 1.933z" class="cls-6" transform="translate(-945 -381)"/>
+        </g>
+    </g>
+</svg>
