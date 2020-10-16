@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnswerItem from './AnswerItem';
+import LongAnswerItem from './LongAnswerItem';
+import ShortAnswerItem from './ShortAnswerItem';
+import { QUESTION_TYPES } from '@/const';
 import connectStore from '@/hoc/connectStore';
 
-const AnswerInput = ({ answer, numChoices, idx, actions }) => {
+const AnswerInput = ({ answer, numChoices, idx, actions, type }) => {
   const isAnswer = (value) => answer.findIndex((item) => item === value) >= 0;
 
   const multipleChoiceList = () =>
@@ -18,17 +21,25 @@ const AnswerInput = ({ answer, numChoices, idx, actions }) => {
         />
       ));
 
+  const getInput = () => {
+    switch (type) {
+      case QUESTION_TYPES.MULTIPLE_CHOICE:
+        return multipleChoiceList();
+      case QUESTION_TYPES.LONG_ANSWER:
+        return <LongAnswerItem />;
+      case QUESTION_TYPES.SHORT_ANSWER:
+        return <ShortAnswerItem />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="answer-form">
       <div className="answer-form__nav">
         <p className="answer-form__title">채점용 정답 입력</p>
       </div>
-      <div className="answer-form__content">
-        {multipleChoiceList()}
-        <div onClick={() => actions.addAnswer(idx, numChoices + 1)} className="answer-form__btn">
-          + 번호추가
-        </div>
-      </div>
+      <div className="answer-form__content">{getInput()}</div>
 
       <style jsx>
         {`

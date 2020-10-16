@@ -1,16 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { QUESTION_TYPES } from '@/const';
+import { QUESTION_TYPES, EXAM } from '@/const';
 import shortid from 'shortid';
 import connectStore from '@/hoc/connectStore';
 
-const OMRItem = ({ question, idx, actions }) => {
+const OMRItem = ({ question, idx, actions, openModal }) => {
   const isSelected = (value) => question.answer.findIndex((answer) => answer === value) >= 0;
 
-  const getMultipleChoices = (numChoices) => (
+  const getMultipleChoices = () => (
     <div>
-      {Array(numChoices)
+      {Array(EXAM.NUM_CHOICES)
         .fill(0)
         .map((_, answerIdx) => (
           <span
@@ -23,7 +23,7 @@ const OMRItem = ({ question, idx, actions }) => {
   );
   const getShortAnswer = () => (
     <div className="short-answer">
-      <p>직접입력</p>
+      <p onClick={openModal}>직접입력</p>
     </div>
   );
 

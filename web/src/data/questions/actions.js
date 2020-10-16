@@ -1,13 +1,8 @@
 import * as ActionTypes from '@/data/rootActionTypes';
+import * as Services from '@/data/rootServices';
 
 export const addQuestion = () => ({
   type: ActionTypes.ADD_QUESTION,
-});
-
-export const addAnswer = (idx, value) => ({
-  type: ActionTypes.ADD_ANSWER,
-  idx,
-  value,
 });
 
 export const changeQuestionType = (idx, checked) => ({
@@ -28,8 +23,31 @@ export const removeQuestion = (idx) => ({
   idx,
 });
 
+
 export const reorderQuestion = (firstIdx, secondIdx) => ({ // 순서바꾸기
   type: ActionTypes.REORDER_QUESTION,
   firstIdx,
   secondIdx,
 });
+
+export const addImage = (file, idx) => ({
+  type: ActionTypes.ADD_IMAGE_QUESTION,
+  file,
+  idx,
+});
+
+export const createExam = (info, questions) => async (dispatch) => {
+  try {
+    const { examPK } = await Services.addExam(info);
+
+    const images = await Services.uploadImages(questions);
+
+    const questionsWithImg = Services.setQuestionsWithImage(questions, images);
+    await Services.addQuestionsToExam(examPK, questionsWithImg);
+
+    dispatch({ type: ActionTypes.CREATE_EXAM });
+    dispatch({ type: ActionTypes.SHOW_QUESTION_MODAL, url: `${origin}/solve/${examPK}` });
+  } catch (err) {
+    console.log(err);
+  }
+};

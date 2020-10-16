@@ -1,17 +1,18 @@
 import React from 'react';
+import connectStore from '@/hoc/connectStore';
 
-const Modal = ({ isModalOpen, closeModal }) => {
-  if (!isModalOpen) return null;
+const QuestionModal = ({ modals: { question }, actions }) => {
+  if (!question.open) return null;
   return (
     <div className="modal-overlay">
       <div className="modal-form">
         <div className="modal-form-title">링크생성이 완료되었습니다!</div>
         <div className="modal-form-content">
           <div className="modal-form-content__link">
-            <input type="text" className="modal-form-content__link-input" />
+            <input type="text" readOnly value={question.url} className="modal-form-content__link-input" />
             <button className="modal-form-content__link-btn">X</button>
           </div>
-          <button className="modal-form-content__copybtn" onClick={closeModal}>
+          <button className="modal-form-content__copybtn" onClick={() => actions.closeQuestionModal()}>
             복사
           </button>
         </div>
@@ -81,4 +82,4 @@ const Modal = ({ isModalOpen, closeModal }) => {
     </div>
   );
 };
-export default Modal;
+export default connectStore(QuestionModal);

@@ -2,9 +2,11 @@ import React from 'react';
 import OMRItem from './OMRItem';
 import shortid from 'shortid';
 
-const OMR = ({ exam }) => {
+const OMR = ({ questions, openModal }) => {
   const omrItemList = () =>
-    exam.questions.map((question, idx) => <OMRItem key={shortid()} idx={idx} question={question} />);
+    questions.map((question, idx) => (
+      <OMRItem key={shortid()} idx={idx} question={question} openModal={openModal} />
+    ));
 
   return (
     <div className="omr">
