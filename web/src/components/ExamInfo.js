@@ -4,29 +4,30 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { toTimeFormat } from '@/utils/format';
 
-const ExamInfo = ({ info: { classTitle, testName, testTime } }) => {
+const ExamInfo = ({ info: { classTitle, testName, testTime }, readOnly = false }) => {
   const history = useHistory();
-  const [remaining, setRemaining] = useState(testTime);
+  const [remaining, setRemaining] = useState(testTime * 60);
 
   const submitExam = () => {
     history.push('/');
   };
 
   useEffect(() => {
-    const timer = setInterval(
-      () => setRemaining((prev) => {
-        console.log(prev);
-        if (prev <= 0) {
-          submitExam();
-          clearInterval(timer);
-          return;
-        }
+    if (readOnly) return;
 
-        return prev - 1;
-      }),
+    const timer = setInterval(
+      () =>
+        setRemaining((prev) => {
+          if (prev <= 0) {
+            submitExam();
+            clearInterval(timer);
+            return;
+          }
+
+          return prev - 1;
+        }),
       1000
     );
-
     return () => clearInterval(timer);
   }, []);
 
