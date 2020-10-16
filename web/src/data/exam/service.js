@@ -32,12 +32,13 @@ export const gradeExam = (questions) => {
       isCorrected: !wrongFlag,
       correct,
       answer,
+      type: question.type,
     };
   });
 
   return {
     corrects,
     incorrects: questions.length - corrects,
-    gradedQuestions, 
+    gradedQuestions,
   };
 };

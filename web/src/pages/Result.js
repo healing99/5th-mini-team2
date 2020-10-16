@@ -5,7 +5,7 @@ import ResultTable from '@/components/ResultTable';
 import Box from '@/components/Box';
 import connectStore from '@/hoc/connectStore';
 
-const Result = ({ exam: { info } }) => {
+const Result = ({ exam: { info, graded } }) => {
   return (
     <>
       <ExamInfo info={info} readOnly />
@@ -14,7 +14,7 @@ const Result = ({ exam: { info } }) => {
         <Box items={['정답 12문제', '오답 8문제', '소요시간 54분']} />
 
         <div className="pad" />
-        <ResultTable />
+        <ResultTable gradedQuestions={graded.questions} />
 
         <div className="btn-root">
           <button className="btn btn-outline-secondary rounded-pill">문제 다시보기</button>

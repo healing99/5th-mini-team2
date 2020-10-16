@@ -88,8 +88,19 @@ const step = (state = EXAM.LOGIN_STEP, action = {}) => {
   }
 };
 
-const initGraded = { corrects: 0, incorrects: 0, gradedQuestions: [] };
-const graded = (state = initGraded, action = {}) => {
+const initGraded = { corrects: 0, incorrects: 0, questions: [] };
+const tempGraded = {
+  corrects: 2,
+  incorrects: 3,
+  questions: [
+    { type: 0, isCorrect: true, correct: [2], answer: [2] },
+    { type: 0, isCorrect: false, correct: [1], answer: [4] },
+    { type: 0, isCorrect: true, correct: [3], answer: [3] },
+    { type: 0, isCorrect: false, correct: [2, 4], answer: [2] },
+    { type: 0, isCorrect: false, correct: [1], answer: [5] },
+  ],
+};
+const graded = (state = tempGraded, action = {}) => {
   switch (action.type) {
     case ActionTypes.SET_GRADED:
       return action.gradedResult;

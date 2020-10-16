@@ -1,3 +1,5 @@
+import { QUESTION_TYPES } from '@/const';
+
 const toDoubleDigit = (number) => number.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
 
 export const toTimeFormat = (time) => {
@@ -24,4 +26,11 @@ export const toCircledNum = (num) => {
     default:
       return '⑤';
   }
+};
+
+export const formatAnswer = (type, answer) => {
+  if (type === QUESTION_TYPES.MULTIPLE_CHOICE) 
+    return answer.map(item => toCircledNum(item)).join(', ');
+  
+  return answer[0];
 };

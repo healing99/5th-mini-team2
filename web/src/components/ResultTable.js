@@ -1,26 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { cut } from '@/utils/array';
-import { toCircledNum } from '@/utils/format';
+import { formatAnswer } from '@/utils/format';
 
-const tempData = Array(50).fill(0);
+const getQuestionCnt = (rowIdx, qIdx) => rowIdx * 4 + qIdx + 1;
 
-const ResultTable = () => {
+const ResultTable = ({ gradedQuestions = [] }) => {
   const tableList = () => {
-    const rows = cut(tempData, 4);
+    const rows = cut(gradedQuestions, 4);
 
-    return rows.map((row, idx) => (
-      <tr>
-        {row.map((item, idx) => (
-          <React.Fragment key={idx}>
-            <td className="number">{1}</td>
-            <td>{toCircledNum((idx % 5) + 1)}</td>
-            <td className={classNames(idx % 2 === 1 ? 'correct' : 'incorrect')}>{toCircledNum((idx % 5) + 1)}</td>
+    return rows.map((row, rowIdx) => (
+      <tr key={rowIdx}>
+        {row.map((question, qIdx) => (
+          <React.Fragment key={qIdx}>
+            <td className="number">{getQuestionCnt(rowIdx, qIdx)}</td>
+            <td>{formatAnswer(question.type, question.answer)}</td>
+            <td className={classNames(question.isCorrect ? 'correct' : 'incorrect')}>
+              {formatAnswer(question.type, question.correct)}
+            </td>
           </React.Fragment>
         ))}
       </tr>
     ));
   };
+
   return (
     <table className="result-table table table-bordered">
       <thead>
@@ -65,6 +69,10 @@ const ResultTable = () => {
       `}</style>
     </table>
   );
+};
+
+ResultTable.propTypes = {
+  gradedQuestions: PropTypes.array,
 };
 
 export default ResultTable;
