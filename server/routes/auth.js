@@ -24,6 +24,13 @@ router.post('/check', async (req, res, next) => {
   }
 });
 */
+router.post('/check', async (req, res, next) => {
+  const { userId, academyCode } = req.body;  // 유저 ID, 유저 PW
+  try {
+    if (is.empty(userId) || is.empty(academyCode)) throw new Error('필수 파라미터가 없습니다.');
+    res.status(200).json(await authMd.check(userId, academyCode));
+  } catch (err) {
+    res.status(400).json({ 'status': 'error', 'msg': err.message });
   }
 });
 
