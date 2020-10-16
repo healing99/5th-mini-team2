@@ -1,6 +1,7 @@
 import * as ActionTypes from '@/data/rootActionTypes';
 import * as Services from '@/data/rootServices';
 import history from '@/utils/history';
+import { EXAM } from '@/const/';
 
 export const nextQuestion = () => ({ type: ActionTypes.NEXT_QUESTION });
 export const prevQuestion = () => ({ type: ActionTypes.PREV_QUESTION });
@@ -34,7 +35,8 @@ export const getExam = (id) => async (dispatch) => {
     dispatch({ type: ActionTypes.INIT_GRADED });
     dispatch({ type: ActionTypes.GET_EXAM, info, questions: parsedQuestions });
   } catch (err) {
-    console.log(err);
+    dispatch({ type: ActionTypes.SET_SOLVE_STEP, step: EXAM.LOGIN_STEP });
+    history.push('/wrong-exam-id');
   } finally {
     dispatch({ type: ActionTypes.HIDE_LOADING });
   }
