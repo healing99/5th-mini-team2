@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const ExamInfo = ({info}) => {
+const ExamInfo = ({ info }) => {
   const { classTitle, testName, testTime } = info;
-  
+
   return (
     <nav className="exam-info">
       <div className={classNames('container', 'navbar')}>

@@ -6,7 +6,6 @@ import DeleteIcon from '@/assets/images/delete.png';
 import connectStore from '@/hoc/connectStore';
 import DragDropButton from '@/assets/images/DragDropButton.png';
 
-
 const Question = ({ idx, question, provided, actions }) => {
   const fileRef = useRef(null);
 

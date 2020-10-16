@@ -35,7 +35,7 @@ const Create = ({ questions, actions }) => {
         )}
       </Draggable>
     ));
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

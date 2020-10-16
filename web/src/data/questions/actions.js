@@ -23,8 +23,8 @@ export const removeQuestion = (idx) => ({
   idx,
 });
 
-
-export const reorderQuestion = (firstIdx, secondIdx) => ({ // 순서바꾸기
+export const reorderQuestion = (firstIdx, secondIdx) => ({
+  // 순서바꾸기
   type: ActionTypes.REORDER_QUESTION,
   firstIdx,
   secondIdx,

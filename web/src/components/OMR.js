@@ -4,9 +4,7 @@ import shortid from 'shortid';
 
 const OMR = ({ questions, openModal }) => {
   const omrItemList = () =>
-    questions.map((question, idx) => (
-      <OMRItem key={shortid()} idx={idx} question={question} openModal={openModal} />
-    ));
+    questions.map((question, idx) => <OMRItem key={shortid()} idx={idx} question={question} openModal={openModal} />);
 
   return (
     <div className="omr">

@@ -1,1 +1,1 @@
-export const NUMBER = /^(\s*|\d+)$/
+export const NUMBER = /^(\s*|\d+)$/;

@@ -16,9 +16,9 @@ export const getExam = (id) => async (dispatch) => {
   try {
     const exam = await Services.fetchExam(id);
     const { questions, ...info } = exam;
-    
+
     const parsedQuestions = Services.parseQuestions(questions);
-    dispatch({type: ActionTypes.GET_EXAM, info, questions: parsedQuestions});
+    dispatch({ type: ActionTypes.GET_EXAM, info, questions: parsedQuestions });
   } catch (err) {
     console.log(err);
   }
