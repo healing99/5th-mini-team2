@@ -60,7 +60,7 @@ const Question = ({ idx, question, provided, actions }) => {
         .image-root {
           height: 400px;
         }
-        .question .handler { 
+        .question .handler {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -105,7 +105,6 @@ const Question = ({ idx, question, provided, actions }) => {
           height: 100%;
           object-fit: contain;
         }
-
       `}</style>
     </div>
   );

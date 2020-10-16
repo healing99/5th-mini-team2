@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Button from '@/components/Button';
 import backgroundImg from '@/assets/images/background.png';
 
@@ -102,6 +102,6 @@ const SolveWelcome = () => {
       </style>
     </div>
   );
-}
+};
 
-export default SolveWelcome
+export default SolveWelcome;

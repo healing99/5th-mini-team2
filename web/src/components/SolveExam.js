@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import ExamInfo from '@/components/ExamInfo';
 import ExamRemaining from '@/components/ExamRemaining';
 import ExamImage from '@/components/ExamImage';
@@ -99,6 +99,6 @@ const SolveExam = ({ exam: { info, questions }, match, actions }) => {
       `}</style>
     </div>
   );
-}
+};
 
 export default connectStore(SolveExam);

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
 import Button from '@/components/Button';
 import TextField from '@/components/TextField';
 import { REG_EXP } from '@/const';
@@ -107,6 +107,6 @@ const SolveLogin = () => {
       </style>
     </div>
   );
-}
+};
 
-export default SolveLogin
+export default SolveLogin;
