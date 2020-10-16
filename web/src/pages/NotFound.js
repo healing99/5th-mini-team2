@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 import ErrorImg from '@/assets/images/Error.svg';
-
 
 export const NotFound = ({ history }) => {
   return (
@@ -8,7 +7,8 @@ export const NotFound = ({ history }) => {
       <img src={ErrorImg} />
       <h3>페이지를 찾을 수 없습니다</h3>
       <p>
-        존재하지 않는 주소를 입력하셨거나,<br />
+        존재하지 않는 주소를 입력하셨거나,
+        <br />
         요청하신 페이지의 주소가 변경,삭제되어 찾을 수 없습니다.
       </p>
 
@@ -29,8 +29,8 @@ export const NotFound = ({ history }) => {
         .notfound h3 {
           font-weight: bold;
           padding-top: 16px;
-        }  
-        
+        }
+
         .notfound p {
           text-align: center;
         }
@@ -40,7 +40,7 @@ export const NotFound = ({ history }) => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default NotFound;       
+export default NotFound;

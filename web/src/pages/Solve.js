@@ -3,8 +3,10 @@ import SolveExam from '@/components/SolveExam';
 import SolveWelcome from '@/components/SolveWelcome';
 import SolveLogin from '@/components/SolveLogin';
 import OMRModal from '@/components/OMRModal';
+import connectStore from '@/hoc/connectStore';
+import { EXAM } from '@/const';
 
-const Solve = ({ match }) => {
+const Solve = ({ match, exam }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -14,6 +16,19 @@ const Solve = ({ match }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const getContent = () => {
+    switch (exam.step) {
+      case EXAM.WELCOME_STEP:
+        return <SolveWelcome />;
+      case EXAM.SOLVE_STEP:
+        return <SolveExam />;
+      case EXAM.LOGIN_STEP:
+      default:
+        return <SolveLogin />;
+    }
+  };
+
   useEffect(() => {
     // const { id } = match.params;
     // actions.getExam(id);
@@ -21,10 +36,10 @@ const Solve = ({ match }) => {
 
   return (
     <div>
-      <SolveLogin />
+      {getContent()}
       <OMRModal isModalOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
 };
 
-export default Solve;
+export default connectStore(Solve);

@@ -1,6 +1,7 @@
 import * as ActionTypes from '@/data/rootActionTypes';
 import { combineReducers } from 'redux';
 import update from 'immutability-helper';
+import { EXAM } from '@/const';
 
 const initExamState = {
   classTitle: '',
@@ -63,7 +64,17 @@ const questions = (state = [], action = {}) => {
   }
 };
 
+const step = (state = EXAM.LOGIN_STEP, action = {}) => {
+  switch (action.type) {
+    case ActionTypes.SET_SOLVE_STEP:
+      return action.step;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   info,
   questions,
+  step,
 });

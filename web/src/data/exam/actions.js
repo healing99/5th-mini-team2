@@ -23,3 +23,8 @@ export const getExam = (id) => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const setSolveStep = (step) => ({
+  type: ActionTypes.SET_SOLVE_STEP,
+  step,
+});
