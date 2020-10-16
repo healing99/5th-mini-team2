@@ -4,7 +4,7 @@ import AnswerInput from './AnswerInput';
 import QuestionType from './QuestionType';
 import DeleteIcon from '@/assets/images/delete.png';
 import connectStore from '@/hoc/connectStore';
-import DragDropButton from '@/assets/images/DragDropButton.png';
+import DragDropButton from '@/assets/images/dragDropButton.png';
 
 const Question = ({ idx, question, provided, actions }) => {
   const fileRef = useRef(null);
