@@ -14,6 +14,7 @@ const SolveWelcome = ({ student, exam, actions }) => {
 
   const handleStart = () => {
     actions.setSolveStep(EXAM.SOLVE_STEP);
+    actions.startExam();
   }
 
   const { info } = exam;

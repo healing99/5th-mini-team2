@@ -11,7 +11,7 @@ const SolveExam = ({ exam: { info, questions }, actions }) => {
 
   return (
     <div className="solve-exam">
-      <ExamInfo info={info} />
+      <ExamInfo info={info} onSubmit={() => actions.submitExam(questions)} />
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
@@ -40,7 +40,7 @@ const SolveExam = ({ exam: { info, questions }, actions }) => {
           </div>
           <div style={{ margin: 0, paddingLeft: 0 }} className="col">
             <button
-              onClick={() => actions.submitExam(questions, info)}
+              onClick={() => actions.submitExam(questions)}
               style={{ margin: 0 }}
               type="button"
               className="btn btn-primary rounded-pill btn-block">

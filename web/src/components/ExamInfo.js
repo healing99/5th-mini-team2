@@ -1,35 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import classNames from 'classnames';
-import { toTimeFormat } from '@/utils/format';
+import { formatTime } from '@/utils/format';
 
-const ExamInfo = ({ info: { classTitle, testName, testTime }, readOnly = false }) => {
-  const history = useHistory();
+const ExamInfo = ({ info: { classTitle, testName, testTime }, onSubmit, readOnly = false }) => {
   const [remaining, setRemaining] = useState(testTime * 60);
-
-  const submitExam = () => {
-    history.push('/');
-  };
 
   useEffect(() => {
     if (readOnly) return;
 
-    const timer = setInterval(
-      () =>
-        setRemaining((prev) => {
-          if (prev <= 0) {
-            submitExam();
-            clearInterval(timer);
-            return;
-          }
-
-          return prev - 1;
-        }),
-      1000
-    );
+    const timer = setInterval(() => setRemaining((prev) => prev - 1), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (remaining <= 0) onSubmit && onSubmit();
+  }, [remaining]);
 
   return (
     <nav className="exam-info">
@@ -45,7 +31,7 @@ const ExamInfo = ({ info: { classTitle, testName, testTime }, readOnly = false }
           </div>
           <div className="col-3 item">
             <span className="rounded-box">시험 시간</span>
-            <span className="text">{toTimeFormat(remaining)}</span>
+            <span className="text">{formatTime(remaining)}</span>
           </div>
         </div>
       </div>

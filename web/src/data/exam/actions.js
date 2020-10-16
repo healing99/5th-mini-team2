@@ -7,6 +7,8 @@ export const prevQuestion = () => ({ type: ActionTypes.PREV_QUESTION });
 export const increaseRemaining = () => ({ type: ActionTypes.INCREASE_REMAINING });
 export const decreaseRemaining = () => ({ type: ActionTypes.DECREASE_REMAINING });
 export const initGraded = () => ({ type: ActionTypes.INIT_GRADED });
+export const startExam = () => ({ type: ActionTypes.START_EXAM, time: new Date() });
+export const endExam = () => ({ type: ActionTypes.END_EXAM, time: new Date() });
 
 export const markAnswer = (idx, answerIdx, value) => ({
   type: ActionTypes.MARK_ANSWER,
@@ -26,7 +28,7 @@ export const getExam = (id) => async (dispatch) => {
     const { questions, ...info } = exam;
 
     const parsedQuestions = Services.parseQuestions(questions);
-    
+
     dispatch({ type: ActionTypes.INIT_GRADED });
     dispatch({ type: ActionTypes.GET_EXAM, info, questions: parsedQuestions });
   } catch (err) {
@@ -36,6 +38,11 @@ export const getExam = (id) => async (dispatch) => {
 
 export const submitExam = (questions) => (dispatch) => {
   const gradedResult = Services.gradeExam(questions);
+
+  dispatch({
+    type: ActionTypes.END_EXAM,
+    time: new Date(),
+  });
 
   dispatch({
     type: ActionTypes.SET_GRADED,

@@ -5,6 +5,7 @@ import ResultScore from '@/components/ResultScore';
 import ResultTable from '@/components/ResultTable';
 import Box from '@/components/Box';
 import connectStore from '@/hoc/connectStore';
+import { timeDiff } from '@/utils/format';
 
 const Result = ({ exam: { info, graded }, student }) => {
   const getScore = () => Math.floor((graded.corrects / (graded.corrects + graded.incorrects)) * 100);
@@ -15,7 +16,13 @@ const Result = ({ exam: { info, graded }, student }) => {
       <ExamInfo info={info} readOnly />
       <main className="container">
         <ResultScore name={student.name} score={getScore()} />
-        <Box items={[`정답 ${graded.corrects}문제`, `오답 ${graded.incorrects}문제`, '소요시간 54분']} />
+        <Box
+          items={[
+            `정답 ${graded.corrects}문제`,
+            `오답 ${graded.incorrects}문제`,
+            `소요시간 ${timeDiff(info.startedAt, info.endedAt)}`,
+          ]}
+        />
 
         <div className="pad" />
         <ResultTable gradedQuestions={graded.questions} />

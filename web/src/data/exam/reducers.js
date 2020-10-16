@@ -10,6 +10,8 @@ const initExamState = {
   current: 0,
   last: 0,
   remain: 0,
+  startedAt: null,
+  endedAt: null,
 };
 
 const info = (state = initExamState, action = {}) => {
@@ -45,6 +47,20 @@ const info = (state = initExamState, action = {}) => {
         ...state,
         remain: state.remain - 1,
       };
+
+    case ActionTypes.START_EXAM: {
+      return {
+        ...state,
+        startedAt: action.time,
+      };
+    }
+
+    case ActionTypes.END_EXAM: {
+      return {
+        ...state,
+        endedAt: action.time,
+      };
+    }
 
     default:
       return state;
@@ -88,7 +104,7 @@ const step = (state = EXAM.LOGIN_STEP, action = {}) => {
   }
 };
 
-const initGraded = { corrects: 0, incorrects: 0, questions: [] };
+const initGraded = { remainTime: 0, corrects: 0, incorrects: 0, questions: [] };
 
 const graded = (state = initGraded, action = {}) => {
   switch (action.type) {
