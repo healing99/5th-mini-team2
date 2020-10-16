@@ -9,7 +9,7 @@ import LongAnswerIcon from '@/assets/images/longAnswer.png';
 
 function QuestionType({ type, idx, actions }) {
   return (
-    <div>
+    <div className="question-type">
       <ToggleButton
         checked={type === QUESTION_TYPES.MULTIPLE_CHOICE}
         onChange={() => actions.changeQuestionType(idx, QUESTION_TYPES.MULTIPLE_CHOICE)}>
@@ -32,6 +32,9 @@ function QuestionType({ type, idx, actions }) {
       </ToggleButton>
 
       <style jsx>{`
+        .question-type {
+          margin: 32px 0px 16px 0px;
+        }
         .toggle-img {
           margin-right: 8px;
         }

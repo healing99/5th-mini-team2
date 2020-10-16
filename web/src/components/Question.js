@@ -34,9 +34,9 @@ const Question = ({ idx, question, provided, actions }) => {
       <div className="row">
         <div className="col-8 image-root">
           <div className="h-100 d-flex flex-column">
-            <div className="title px-3 d-flex">
-              <div className="question-number">문제 {idx + 1}</div>
-              <div {...provided.dragHandleProps}>
+            <div className="title d-flex">
+              <span>문제 {idx + 1}</span>
+              <div className="handler" {...provided.dragHandleProps}>
                 <img src={DragDropButton} />
               </div>
             </div>
@@ -55,13 +55,16 @@ const Question = ({ idx, question, provided, actions }) => {
       <style jsx global>{`
         .question {
           width: 100%;
-          padding-bottom: 5%;
+          padding: 16px 0px;
         }
         .image-root {
           height: 400px;
         }
-        .question-number {
-          flex-basis: 48.5%;
+        .question .handler { 
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         .question .title {
           font-weight: 600;
@@ -69,6 +72,8 @@ const Question = ({ idx, question, provided, actions }) => {
           font-size: 18px;
           border: solid 1px #707070;
           border-bottom: none;
+          padding: 8px 16px;
+          position: relative;
         }
         .question .attach {
           width: 100%;

@@ -74,7 +74,7 @@ const Create = ({ questions, actions }) => {
       <main className="container">
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
-            {(provided, snapshot) => <div ref={provided.innerRef}>{questionList()}</div>}
+            {(provided, _) => <div ref={provided.innerRef}>{questionList()}</div>}
           </Droppable>
         </DragDropContext>
         <div className="add-button">
@@ -94,12 +94,13 @@ const Create = ({ questions, actions }) => {
           padding-bottom: 64px;
         }
         .create .pad {
-          padding-top: 64px;
+          padding-top: 32px;
         }
         .create .add-button {
           display: flex;
           align-items: center;
           justify-content: center;
+          margin-top: 16px;
         }
       `}</style>
     </div>

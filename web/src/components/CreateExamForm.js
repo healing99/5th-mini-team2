@@ -46,7 +46,7 @@ const CreateExamForm = ({ handleSubmit, info, handleChange }) => {
       <style jsx global>
         {`
           .exam-form {
-            background-color: #b0d5e5;
+            background-color: #8ec2dc;
             color: #fff;
             height: 70px;
           }
