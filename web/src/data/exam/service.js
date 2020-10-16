@@ -8,6 +8,7 @@ export const fetchExam = async (id) => {
 
 export const parseQuestions = (questions) =>
   questions.map((question) => ({
+    correct: JSON.parse(question.answer), 
     answer: [],
     img: `${URLS.BASE_URL}/img/${question.img}`,
     type: Number(question.type),
