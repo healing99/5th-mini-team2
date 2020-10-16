@@ -5,13 +5,15 @@ import ResultTable from '@/components/ResultTable';
 import Box from '@/components/Box';
 import connectStore from '@/hoc/connectStore';
 
-const Result = ({ exam: { info, graded } }) => {
+const Result = ({ exam: { info, graded }, student }) => {
+  const getScore = () => Math.floor((graded.corrects / (graded.corrects + graded.incorrects)) * 100);
+
   return (
     <>
       <ExamInfo info={info} readOnly />
       <main className="container">
-        <ResultScore name="홍길동" score={80} />
-        <Box items={['정답 12문제', '오답 8문제', '소요시간 54분']} />
+        <ResultScore name={student.name} score={getScore()} />
+        <Box items={[`정답 ${graded.corrects}문제`, `오답 ${graded.incorrects}문제`, '소요시간 54분']} />
 
         <div className="pad" />
         <ResultTable gradedQuestions={graded.questions} />

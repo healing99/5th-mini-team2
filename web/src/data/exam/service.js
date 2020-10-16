@@ -39,6 +39,6 @@ export const gradeExam = (questions) => {
   return {
     corrects,
     incorrects: questions.length - corrects,
-    gradedQuestions,
+    questions: gradedQuestions,
   };
 };
