@@ -1,35 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Button from '@/components/Button';
+import connectStore from '@/hoc/connectStore';
 import backgroundImg from '@/assets/images/background.png';
+import { EXAM } from '@/const';
 
-const SolveWelcome = () => {
-  const handleStartButton = (e) => {
-    e.preventDefault();
-  };
+const SolveWelcome = ({ student, exam, actions }) => {
+  const { id } = useParams();
+
+  useEffect(() => {
+    actions.getExam(id);
+  }, []);
+
+  const handleStart = () => {
+    actions.setSolveStep(EXAM.SOLVE_STEP);
+  }
+
+  const { info } = exam;
   return (
     <div className="bg">
       <div className="container">
         <div className="profile-circle" />
         <div className="col">
           <div className="row">
-            <div className="title">홍길동 학생, 어서오세요!</div>
+            <div className="title">{student.name} 학생, 어서오세요!</div>
           </div>
           <div className="row">
             <div className="test-info">CLASS</div>
-            <div>둘리반 심화</div>
+            <div>{info.classTitle}</div>
           </div>
           <div className="row">
             <div className="test-info">시험명</div>
-            <div>국어 {'>'} 문법 심화</div>
+            <div>{info.testName}</div>
           </div>
           <div className="row">
             <div className="test-info">시험시간</div>
-            <div>60분</div>
+            <div>{`${info.testTime}분`}</div>
           </div>
           <div className="row">
             <Button
-              onClick={handleStartButton}
-              type="submit"
+              onClick={handleStart}
               style={{
                 width: '345px',
                 height: '43px',
@@ -104,4 +114,4 @@ const SolveWelcome = () => {
   );
 };
 
-export default SolveWelcome;
+export default connectStore(SolveWelcome);

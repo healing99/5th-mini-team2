@@ -11,7 +11,7 @@ function ExamRemaining({ current, remain }) {
       <style jsx>{`
         .exam-remaining {
           padding: 8px 16px;
-          background-color: #b0d5e5;
+          background-color: #8ec2dc;
           font-size: 14px;
         }
         .exam-remaining .current {

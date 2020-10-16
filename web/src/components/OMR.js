@@ -21,7 +21,7 @@ const OMR = ({ questions, openModal }) => {
           height: 100%;
         }
         .omr .title {
-          background-color: #b0d5e5;
+          background-color: #8ec2dc;
           color: #6c6c6c;
           display: flex;
           align-items: center;

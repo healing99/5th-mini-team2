@@ -1,5 +1,12 @@
-const student = (state = { name: '', academy: '' }, action = {}) => {
+import * as ActionTypes from '@/data/rootActionTypes';
+
+const student = (state = { name: '' }, action = {}) => {
   switch (action.type) {
+    case ActionTypes.SET_STUDENT:
+      return {
+        name: action.name
+      }
+
     default:
       return state;
   }

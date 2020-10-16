@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ExamInfo from '@/components/ExamInfo';
 import ExamRemaining from '@/components/ExamRemaining';
 import ExamImage from '@/components/ExamImage';
@@ -6,21 +6,8 @@ import OMR from '@/components/OMR';
 import connectStore from '@/hoc/connectStore';
 import OMRModal from '@/components/OMRModal';
 
-const SolveExam = ({ exam: { info, questions }, match, actions }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  // useEffect(() => {
-  //   const { id } = match.params;
-  //   actions.getExam(id);
-  // }, []);
+const SolveExam = ({ exam: { info, questions }, actions }) => {
+  const [omrModal, setOmrModal] = useState(false);
 
   return (
     <div className="solve-exam">
@@ -36,7 +23,7 @@ const SolveExam = ({ exam: { info, questions }, match, actions }) => {
             <ExamImage question={questions[info.current]} />
           </div>
           <div className="col-3 omr">
-            <OMR questions={questions} openModal={openModal} />
+            <OMR questions={questions} openModal={() => setOmrModal(true)} />
           </div>
         </div>
         <div className="row button-wrapper">
@@ -59,7 +46,7 @@ const SolveExam = ({ exam: { info, questions }, match, actions }) => {
         </div>
       </main>
 
-      <OMRModal isModalOpen={isModalOpen} closeModal={closeModal} />
+      <OMRModal isModalOpen={omrModal} closeModal={() => setOmrModal(false)} />
 
       <style jsx global>{`
         .solve-exam {

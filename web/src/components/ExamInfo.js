@@ -19,14 +19,14 @@ const ExamInfo = ({ info }) => {
           </div>
           <div className="col-3 item">
             <span className="rounded-box">시험 시간</span>
-            <span className="text">{testTime}</span>
+            <span className="text">{`${testTime} 분`}</span>
           </div>
         </div>
       </div>
       <style jsx>{`
         .exam-info {
           height: 70px;
-          background-color: #b0d5e5;
+          background-color: #8ec2dc;
           color: #fff;
         }
         .exam-info .container {

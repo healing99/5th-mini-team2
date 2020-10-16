@@ -4,14 +4,15 @@ import TextField from '@/components/TextField';
 import { REG_EXP } from '@/const';
 import TestyImg from '@/assets/images/testy.png';
 import backgroundImg from '@/assets/images/background.png';
+import connectStore from '@/hoc/connectStore';
 
-const SolveLogin = () => {
+const SolveLogin = ({ actions }) => {
   const loginButton = useRef();
   const [inputs, setInputs] = useState({
-    studentName: '',
-    classCode: '',
+    userId: '',
+    academyCode: '',
   });
-  const { studentName, classCode } = inputs;
+  const { userId, academyCode } = inputs;
   const handleValueChange = (e) => {
     const { value, name } = e.target;
     setInputs({
@@ -22,11 +23,12 @@ const SolveLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (studentName === '' || classCode === '') {
+    if (!userId || !academyCode) {
       alert('내용을 입력하세요');
-    } else {
-      console.log(`${studentName} ${classCode}`);
+      return;
     }
+
+    actions.signIn(inputs);
     loginButton.current.blur();
   };
 
@@ -34,13 +36,14 @@ const SolveLogin = () => {
     <div className="bg">
       <div className="container">
         <p>시험관리 온라인 서비스</p>
-        <div className="col" align="center">
+        <form onSubmit={handleSubmit} className="col" align="center">
           <img className="testy-img" src={TestyImg} />
+
           <div className="row">
             <TextField
               onChange={handleValueChange}
-              value={inputs.studentName}
-              name="studentName"
+              value={inputs.userId}
+              name="userId"
               placeholder="이름"
               style={{ width: '390px', height: '40px', borderRadius: '22px', marginRight: '30px' }}
             />
@@ -49,8 +52,8 @@ const SolveLogin = () => {
             <TextField
               onChange={handleValueChange}
               pattern={REG_EXP.NUMBER}
-              value={inputs.classCode}
-              name="classCode"
+              value={inputs.academyCode}
+              name="academyCode"
               placeholder="학원코드입력"
               style={{ width: '390px', height: '40px', borderRadius: '22px', marginRight: '30px' }}
             />
@@ -70,7 +73,7 @@ const SolveLogin = () => {
               <span className="button-text">로그인</span>
             </Button>
           </div>
-        </div>
+        </form>
       </div>
       <style jsx>
         {`
@@ -100,7 +103,7 @@ const SolveLogin = () => {
             margin-bottom: 48px;
           }
           .button-text {
-            color: #4ca2c5;
+            color: #fff;
             font-weight: bold;
           }
         `}
@@ -109,4 +112,4 @@ const SolveLogin = () => {
   );
 };
 
-export default SolveLogin;
+export default connectStore(SolveLogin);
