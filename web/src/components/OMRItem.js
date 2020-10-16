@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { QUESTION_TYPES, EXAM } from '@/const';
 import shortid from 'shortid';
+import { QUESTION_TYPES, EXAM } from '@/const';
 import connectStore from '@/hoc/connectStore';
 
-const OMRItem = ({ question, idx, actions, openModal }) => {
+const OMRItem = ({ question, idx, actions }) => {
   const isSelected = (value) => question.answer.findIndex((answer) => answer === value) >= 0;
 
   const markAnswer = (idx, answerIdx, selected) => {
@@ -13,7 +13,14 @@ const OMRItem = ({ question, idx, actions, openModal }) => {
 
     if (selected && question.answer.length === 0) actions.decreaseRemaining();
     if (!selected && question.answer.length - 1 === 0) actions.increaseRemaining();
-  }
+  };
+
+  const writeAnswer = (idx, value) => {
+    if (!value && question.answer[0]) actions.increaseRemaining();
+    if (value && !question.answer[0]) actions.decreaseRemaining();
+
+    actions.writeAnswer(idx, value);
+  };
 
   const getMultipleChoices = () => (
     <div>
@@ -28,15 +35,17 @@ const OMRItem = ({ question, idx, actions, openModal }) => {
         ))}
     </div>
   );
-  const getShortAnswer = () => (
-    <div className="short-answer">
-      <p onClick={openModal}>직접입력</p>
-    </div>
-  );
 
   const getItem = () => {
     if (question.type === QUESTION_TYPES.MULTIPLE_CHOICE) return getMultipleChoices(question.numChoices);
-    return getShortAnswer();
+    return (
+      <input
+        value={question.answer[0]}
+        onChange={({ target: { value } }) => writeAnswer(idx, value)}
+        className="short-answer"
+        placeholder="직접입력"
+      />
+    );
   };
 
   return (
@@ -68,6 +77,8 @@ const OMRItem = ({ question, idx, actions, openModal }) => {
         .omr-item .short-answer {
           border: solid 1px #878787;
           height: 30px;
+          width: 100%;
+          margin: 0px 8px;
         }
         .omr-item .short-answer p {
           width: 100%;

@@ -1,5 +1,5 @@
 import axios from '@/utils/axios';
-import { URLS } from '@/const';
+import { URLS, QUESTION_TYPES } from '@/const';
 export const fetchExam = async (id) => {
   const { data } = await axios.get(`solve/${id}`);
 
@@ -9,7 +9,7 @@ export const fetchExam = async (id) => {
 export const parseQuestions = (questions) =>
   questions.map((question) => ({
     correct: JSON.parse(question.answer),
-    answer: [],
+    answer: Number(question.type) === QUESTION_TYPES.MULTIPLE_CHOICE ? [] : [''],
     img: `${URLS.BASE_URL}/img/${question.img}`,
     type: Number(question.type),
   }));

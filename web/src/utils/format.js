@@ -40,7 +40,7 @@ export const toCircledNum = (num) => {
 };
 
 export const formatAnswer = (type, answer) => {
-  if (type === QUESTION_TYPES.MULTIPLE_CHOICE) return answer.map((item) => toCircledNum(item)).join(', ');
+  if (type === QUESTION_TYPES.MULTIPLE_CHOICE) return answer.map((item) => toCircledNum(item + 1)).join(', ');
 
   return answer[0];
 };

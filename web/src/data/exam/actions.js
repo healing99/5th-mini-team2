@@ -18,6 +18,12 @@ export const markAnswer = (idx, answerIdx, value) => ({
   value,
 });
 
+export const writeAnswer = (idx, value) => ({
+  type: ActionTypes.WRITE_ANSWER,
+  idx,
+  value,
+});
+
 export const setSolveStep = (step) => ({
   type: ActionTypes.SET_SOLVE_STEP,
   step,

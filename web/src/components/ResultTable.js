@@ -16,7 +16,7 @@ const ResultTable = ({ gradedQuestions = [] }) => {
           <React.Fragment key={qIdx}>
             <td className="number">{getQuestionCnt(rowIdx, qIdx)}</td>
             <td>{formatAnswer(question.type, question.answer)}</td>
-            <td className={classNames(question.isCorrect ? 'correct' : 'incorrect')}>
+            <td className={classNames(question.isCorrected ? 'correct' : 'incorrect')}>
               {formatAnswer(question.type, question.correct)}
             </td>
           </React.Fragment>
@@ -65,6 +65,7 @@ const ResultTable = ({ gradedQuestions = [] }) => {
         }
         .result-table td {
           width: 10%;
+          vertical-align: middle;
         }
       `}</style>
     </table>

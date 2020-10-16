@@ -87,6 +87,13 @@ const questions = (state = [], action = {}) => {
         };
       });
 
+    case ActionTypes.WRITE_ANSWER:
+      return update(state, {
+        [action.idx]: {
+          answer: { $set: [action.value] },
+        },
+      });
+
     case ActionTypes.GET_EXAM:
       return action.questions;
 
