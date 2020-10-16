@@ -2,7 +2,6 @@ import axios from '@/utils/axios';
 
 export const signInStudent = async (creds) => {
   const { data } = await axios.post('/auth/check', creds);
-  console.log(data);
 
   return data;
 }

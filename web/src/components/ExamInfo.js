@@ -6,17 +6,26 @@ import { toTimeFormat } from '@/utils/format';
 
 const ExamInfo = ({ info: { classTitle, testName, testTime } }) => {
   const history = useHistory();
-  const [remaining, setRemaining] = useState(testTime * 60);
+  const [remaining, setRemaining] = useState(testTime);
+
+  const submitExam = () => {
+    history.push('/');
+  };
 
   useEffect(() => {
-    const runTimer = () => {
-      if (remaining < 0) {
-        history.push('/');
-        return;
-      }
-      setRemaining(prev => prev - 1);
-    }
-    const timer = setInterval(runTimer, 1000);
+    const timer = setInterval(
+      () => setRemaining((prev) => {
+        console.log(prev);
+        if (prev <= 0) {
+          submitExam();
+          clearInterval(timer);
+          return;
+        }
+
+        return prev - 1;
+      }),
+      1000
+    );
 
     return () => clearInterval(timer);
   }, []);
