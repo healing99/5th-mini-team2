@@ -22,6 +22,7 @@ const App = () => {
       <style jsx global>{`
         body {
           padding: 0;
+          font-family: 'Noto-Sans-KR', sans-serif;
         }
       `}</style>
     </BrowserRouter>
