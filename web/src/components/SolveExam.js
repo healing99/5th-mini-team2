@@ -15,7 +15,7 @@ const SolveExam = ({ exam: { info, questions }, actions }) => {
       <main className="container">
         <div className="row">
           <div className="col-9 remain-root">
-            <ExamRemaining current={info.current + 1} remain={info.last} />
+            <ExamRemaining current={info.current + 1} remain={info.remain} />
           </div>
         </div>
         <div className="row question-input">

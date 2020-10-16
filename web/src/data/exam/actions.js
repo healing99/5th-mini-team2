@@ -9,7 +9,6 @@ export const markAnswer = (idx, answerIdx, value) => ({
 });
 
 export const nextQuestion = () => ({ type: ActionTypes.NEXT_QUESTION });
-
 export const prevQuestion = () => ({ type: ActionTypes.PREV_QUESTION });
 
 export const getExam = (id) => async (dispatch) => {
@@ -28,3 +27,6 @@ export const setSolveStep = (step) => ({
   type: ActionTypes.SET_SOLVE_STEP,
   step,
 });
+
+export const increaseRemaining = () => ({ type: ActionTypes.INCREASE_REMAINING });
+export const decreaseRemaining = () => ({ type: ActionTypes.DECREASE_REMAINING });

@@ -8,13 +8,20 @@ import connectStore from '@/hoc/connectStore';
 const OMRItem = ({ question, idx, actions, openModal }) => {
   const isSelected = (value) => question.answer.findIndex((answer) => answer === value) >= 0;
 
+  const markAnswer = (idx, answerIdx, selected) => {
+    actions.markAnswer(idx, answerIdx, selected);
+
+    if (selected && question.answer.length === 0) actions.decreaseRemaining();
+    if (!selected && question.answer.length - 1 === 0) actions.increaseRemaining();
+  }
+
   const getMultipleChoices = () => (
     <div>
       {Array(EXAM.NUM_CHOICES)
         .fill(0)
         .map((_, answerIdx) => (
           <span
-            onClick={() => actions.markAnswer(idx, answerIdx, !isSelected(answerIdx))}
+            onClick={() => markAnswer(idx, answerIdx, !isSelected(answerIdx))}
             key={shortid()}
             className={classNames('dot', isSelected(answerIdx) && 'selected')}
           />

@@ -9,6 +9,7 @@ const initExamState = {
   testTime: '',
   current: 0,
   last: 0,
+  remain: 0,
 };
 
 const info = (state = initExamState, action = {}) => {
@@ -18,6 +19,7 @@ const info = (state = initExamState, action = {}) => {
         ...action.info,
         current: 0,
         last: action.questions.length,
+        remain: action.questions.length,
       };
 
     case ActionTypes.NEXT_QUESTION:
@@ -31,6 +33,19 @@ const info = (state = initExamState, action = {}) => {
         ...state,
         current: state.current - 1 >= 0 ? state.current - 1 : 0,
       };
+
+    case ActionTypes.INCREASE_REMAINING:
+      return {
+        ...state,
+        remain: state.remain + 1,
+      }
+
+    case ActionTypes.DECREASE_REMAINING:
+      return {
+        ...state,
+        remain: state.remain - 1,
+      }
+
     default:
       return state;
   }
