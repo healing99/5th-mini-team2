@@ -15,7 +15,7 @@ const SolveWelcome = ({ student, exam, actions }) => {
   const handleStart = () => {
     actions.setSolveStep(EXAM.SOLVE_STEP);
     actions.startExam();
-  }
+  };
 
   const { info } = exam;
   return (
@@ -26,17 +26,17 @@ const SolveWelcome = ({ student, exam, actions }) => {
           <div className="row">
             <div className="title">{student.name} 학생, 어서오세요!</div>
           </div>
-          <div className="row">
-            <div className="test-info">CLASS</div>
-            <div>{info.classTitle}</div>
+          <div className="row center">
+            <div className="col-5 center-item test-content">CLASS</div>
+            <div className="col-7 center-item test-info">{info.classTitle}</div>
           </div>
           <div className="row">
-            <div className="test-info">시험명</div>
-            <div>{info.testName}</div>
+            <div className="col-5 center-item test-content">시험명</div>
+            <div className="col-7 center-item test-info">{info.testName}</div>
           </div>
           <div className="row">
-            <div className="test-info">시험시간</div>
-            <div>{`${info.testTime}분`}</div>
+            <div className="col-5 center-item test-content">시험시간</div>
+            <div className="col-7 center-item test-info bold-text">{`${info.testTime}분`}</div>
           </div>
           <div className="row">
             <Button
@@ -53,7 +53,7 @@ const SolveWelcome = ({ student, exam, actions }) => {
           </div>
         </div>
       </div>
-      <style jsx>
+      <style jsx scoped>
         {`
           .bg {
             display: flex;
@@ -65,6 +65,15 @@ const SolveWelcome = ({ student, exam, actions }) => {
             margin-top: 120px;
             width: 350px;
           }
+          .center-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .bold-text {
+            font-weight: bold;
+          }
+
           .profile-circle {
             width: 100px;
             height: 100px;
@@ -75,24 +84,25 @@ const SolveWelcome = ({ student, exam, actions }) => {
           .row:nth-child(1) {
             justify-content: center;
           }
-          .row:nth-child(3) {
-            line-height: 1.46;
-            letter-spacing: -1.3px;
-            color: #ffffff;
-            white-space: pre;
+          .test-content {
+            background-color: #c2dae5;
           }
           .test-info {
             display: flex;
-            width: 45%;
+            align-items: center;
             justify-content: center;
           }
           .row:nth-child(2n) {
-            background-color: #cee1e9;
+            background-color: #9ec6db;
             height: 43px;
-            padding-top: 8px;
-            margin-top: 8px;
-            margin-bottom: 10px;
-            color: #707070;
+            margin: 4px 0px;
+            color: #585858;
+          }
+          .row:nth-child(3) {
+            background-color: #9ec6db;
+            height: 43px;
+            margin: 4px 0px;
+            color: #585858;
           }
           .row:nth-child(5) {
             margin-top: 50px;
