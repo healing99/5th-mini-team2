@@ -2,7 +2,6 @@ import React from 'react';
 import OMRItem from './OMRItem';
 
 const OMR = ({ questions, openModal }) => {
-  console.log(questions);
   const omrItemList = () =>
     questions.map((question, idx) => <OMRItem key={idx} idx={idx} question={question} openModal={openModal} />);
 
