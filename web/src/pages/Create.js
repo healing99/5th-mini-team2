@@ -46,6 +46,11 @@ const Create = ({ questions, actions }) => {
       return;
     }
 
+    if (!questions.length) {
+      alert('질문은 최소 1개 이상이여야 합니다.');
+      return;
+    }
+
     let flagQuestion = false;
     Object.entries(questions).forEach(([_, question]) => {
       const { image, answer } = question;
@@ -69,7 +74,7 @@ const Create = ({ questions, actions }) => {
   useEffect(() => {
     actions.initQuestions();
   }, []);
-  
+
   return (
     <div className="create">
       <CreateExamForm handleChange={handleInfo} info={info} handleSubmit={handleSubmit} />
