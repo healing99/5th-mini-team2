@@ -17,7 +17,14 @@ const Question = ({ idx, question, provided, actions }) => {
 
   const imgAttachment = () => {
     if (question.image)
-      return <img className="image" src={URL.createObjectURL(question.image)} alt={`question${idx}`} />;
+      return (
+        <img
+          onClick={() => fileRef.current.click()}
+          className="image pointer"
+          src={URL.createObjectURL(question.image)}
+          alt={`question${idx}`}
+        />
+      );
 
     return (
       <div className="pointer" onClick={() => fileRef.current.click()}>
