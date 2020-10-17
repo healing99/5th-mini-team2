@@ -54,7 +54,7 @@ export const createExam = (info, questions) => async (dispatch) => {
     dispatch({ type: ActionTypes.CREATE_EXAM });
     dispatch({ type: ActionTypes.SHOW_QUESTION_MODAL, url: `${origin}/solve/${examPK}` });
   } catch (err) {
-    console.log(err);
+    alert('오류가 발생했습니다.');
   } finally {
     dispatch({ type: ActionTypes.HIDE_LOADING });
   }
