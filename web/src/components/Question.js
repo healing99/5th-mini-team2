@@ -20,7 +20,7 @@ const Question = ({ idx, question, provided, actions }) => {
       return <img className="image" src={URL.createObjectURL(question.image)} alt={`question${idx}`} />;
 
     return (
-      <div>
+      <div className="pointer" onClick={() => fileRef.current.click()}>
         <span className="add">+</span>
         <p>이미지를 첨부하세요.</p>
       </div>
@@ -40,7 +40,7 @@ const Question = ({ idx, question, provided, actions }) => {
                 <img src={DragDropButton} />
               </div>
             </div>
-            <div onClick={() => fileRef.current.click()} className="attach">
+            <div className="attach">
               {imgAttachment()}
               <input accept="image/*" hidden={true} onChange={handleFile} ref={fileRef} type="file" />
               <img className="delete" src={DeleteIcon} onClick={() => actions.removeQuestion(idx)} />
@@ -56,6 +56,9 @@ const Question = ({ idx, question, provided, actions }) => {
         .question {
           width: 100%;
           padding: 16px 0px;
+        }
+        .question .pointer {
+          cursor: pointer;
         }
         .image-root {
           height: 400px;
@@ -75,6 +78,7 @@ const Question = ({ idx, question, provided, actions }) => {
           padding: 0px 16px;
           position: relative;
           height: 50px;
+          background-color: #fff;
         }
         .question .title span {
           margin: auto 0px;
@@ -89,7 +93,6 @@ const Question = ({ idx, question, provided, actions }) => {
           border: solid 1px #707070;
           color: #707070;
           text-align: center;
-          cursor: pointer;
         }
         .question .attach .add {
           font-size: 36px;
