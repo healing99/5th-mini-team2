@@ -1,6 +1,10 @@
 import * as ActionTypes from '@/data/rootActionTypes';
 import * as Services from '@/data/rootServices';
 
+export const initQuestions = () => ({
+  type: ActionTypes.INIT_QUESTIONS,
+});
+
 export const addQuestion = () => ({
   type: ActionTypes.ADD_QUESTION,
 });

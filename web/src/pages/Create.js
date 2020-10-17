@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CreateExamForm from '@/components/CreateExamForm';
 import Question from '@/components/Question';
 import QuestionModal from '@/components/QuestionModal';
@@ -66,6 +66,10 @@ const Create = ({ questions, actions }) => {
     });
   };
 
+  useEffect(() => {
+    actions.initQuestions();
+  }, []);
+  
   return (
     <div className="create">
       <CreateExamForm handleChange={handleInfo} info={info} handleSubmit={handleSubmit} />

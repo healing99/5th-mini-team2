@@ -3,16 +3,7 @@ import * as ActionTypes from '@/data/rootActionTypes';
 import update from 'immutability-helper';
 import shortid from 'shortid';
 
-const initState = [
-  { type: QUESTION_TYPES.MULTIPLE_CHOICE, image: null, numChoices: 5, answer: [2], id: shortid() },
-  {
-    type: QUESTION_TYPES.MULTIPLE_CHOICE,
-    image: null,
-    numChoices: 5,
-    answer: [2, 3],
-    id: shortid(),
-  },
-];
+const initState = [{ type: QUESTION_TYPES.MULTIPLE_CHOICE, image: null, numChoices: 5, answer: [2], id: shortid() }];
 
 const getNewQuestion = () => ({
   type: QUESTION_TYPES.MULTIPLE_CHOICE,
@@ -24,6 +15,9 @@ const getNewQuestion = () => ({
 
 const questions = (state = initState, action = {}) => {
   switch (action.type) {
+    case ActionTypes.INIT_QUESTIONS:
+      return initState;
+
     case ActionTypes.ADD_QUESTION:
       return update(state, { $push: [getNewQuestion()] });
 
